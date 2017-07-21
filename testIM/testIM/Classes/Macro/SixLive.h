@@ -18,7 +18,7 @@
 
 
 /** 第三方框架 */
-#import <AFNetworking.h>
+#import "AFNetworking.h"
 #import <UIImageView+WebCache.h>
 
 
@@ -31,6 +31,7 @@
 #import "UIView+Addition.h"
 #import "NSString+Check.h"
 #import "NSString+Addition.h"
+#import "NSDictionary+SIXParse.h"
 
 /** macro */
 #import "SIXGlobalMacro.h"

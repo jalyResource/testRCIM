@@ -52,52 +52,52 @@ static NSTimeInterval REQUEST_TIME_OUT = 15;
 
 
 - (void)GET:(NSString *)link paramaters:(NSDictionary *)params success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock {
-    [self.manager GET:link parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
-        ;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            // 判断 flag
-            NSUInteger flag = [[((NSDictionary *)responseObject) objectForKey:@"flag"] integerValue];
-            
-            switch (flag) {
-                case EnumHttpCodeFaile: {
-                    NSError *error = [NSError errorWithDomain:link code:flag userInfo:responseObject];
-                    failureBlock(error);
-                    break;
-                }
-                default:
-                    successBlock((NSDictionary *)responseObject);
-                    break;
-            }
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failureBlock(error);
-    }];
+//    [self.manager GET:link parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
+//        ;
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//            // 判断 flag
+//            NSUInteger flag = [[((NSDictionary *)responseObject) objectForKey:@"flag"] integerValue];
+//            
+//            switch (flag) {
+//                case EnumHttpCodeFaile: {
+//                    NSError *error = [NSError errorWithDomain:link code:flag userInfo:responseObject];
+//                    failureBlock(error);
+//                    break;
+//                }
+//                default:
+//                    successBlock((NSDictionary *)responseObject);
+//                    break;
+//            }
+//        }
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        failureBlock(error);
+//    }];
 }
 
 - (void)POST:(NSString *)link paramaters:(NSDictionary *)params success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock {
-    [self.manager POST:link parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
-        ;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            // 判断 flag
-            NSUInteger flag = [[((NSDictionary *)responseObject) objectForKey:@"flag"] integerValue];
-            
-            switch (flag) {
-                case EnumHttpCodeFaile: {
-                    NSError *error = [NSError errorWithDomain:link code:flag userInfo:responseObject];
-                    failureBlock(error);
-                    break;
-                }
-                default:
-                    successBlock((NSDictionary *)responseObject);
-                    break;
-            }
-
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failureBlock(error);
-    }];
+//    [self.manager POST:link parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+//        ;
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//            // 判断 flag
+//            NSUInteger flag = [[((NSDictionary *)responseObject) objectForKey:@"flag"] integerValue];
+//            
+//            switch (flag) {
+//                case EnumHttpCodeFaile: {
+//                    NSError *error = [NSError errorWithDomain:link code:flag userInfo:responseObject];
+//                    failureBlock(error);
+//                    break;
+//                }
+//                default:
+//                    successBlock((NSDictionary *)responseObject);
+//                    break;
+//            }
+//
+//        }
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        failureBlock(error);
+//    }];
 }
 
 

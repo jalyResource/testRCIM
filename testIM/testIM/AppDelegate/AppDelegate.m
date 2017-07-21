@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "SIXLoginViewController.h"
+
 
 @interface AppDelegate ()
 
@@ -17,8 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    SIXViewController *vc = [[SIXViewController alloc] init];
-    vc.view.backgroundColor = [UIColor randomColor];
+    SIXLoginViewController *vc = [[SIXLoginViewController alloc] init];
     
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
