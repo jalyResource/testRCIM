@@ -21,7 +21,10 @@
 @property (strong, nonatomic) UIButton *btnUser1;
 
 /** Data */
-@property (strong, nonatomic) NSString *strToken;
+@property (copy, nonatomic) NSString *strToken;
+@property (copy, nonatomic) NSString *phone;
+@property (copy, nonatomic) NSString *password;
+@property (copy, nonatomic) NSString *userId;
 
 @property (assign, nonatomic) NSUInteger loginFailureTimes;
 
@@ -33,7 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self addData];
+    [self loadData];
+    [self adjustLoginState];
 }
 
 - (void)addData {
@@ -54,6 +58,25 @@
     self.btnUser1.frame = CGRectMake(margin, CGRectGetMaxY(self.btnLogin.frame) + 20, width/2 - margin, height);
 }
 
+- (void)loadData {
+    self.phone = [SIXUserManager getDefaultPhone];
+    self.password = [SIXUserManager getDefaultPassword];
+    self.strToken = [SIXUserManager getDefaultToken];
+    self.userId = [SIXUserManager getDefaultUserId];
+}
+/**
+ * 根据 本地 缓存的用户数据，判断是否已经登录
+ */
+- (void)adjustLoginState {
+    if (0 != self.userId.length && 0!=self.strToken.length && 0!=self.password.length) {
+        // 已经登录，利用 token 连接融云服务器
+        [self connectedRCloudServer];
+    } else {
+        // 未登录状态，添加 UI
+        [self addData];
+    }
+}
+
 #pragma -mark 
 #pragma -mark event response
 - (void)btnLoginClicked:(UIButton *)sender {
@@ -63,17 +86,23 @@
     if ( 0 == phone.length || 0 == pwd.length) {
         return;
     }
+    self.phone = phone;
+    self.password = pwd;
     
+    [self showLoading];
     [AFHttpTool loginWithPhone:phone password:pwd region:@"86" success:^(id response) {
+        [self hiddenLoading];
         NSInteger code = [((NSDictionary *)response) parseIntegerWithKey:@"code"];
         if (200 == code) {
             NSDictionary *dicResult = [((NSDictionary *)response) objectForKey:@"result"];
             self.strToken = [dicResult parseStringWithKey:@"token"];
+            
             [self connectedRCloudServer];
         } else {
             DLog(@"login error code : %lu", code);
         }
     } failure:^(NSError *err) {
+        [self hiddenLoading];
         NSLog(@"login error: %@", err.userInfo);
     }];
     /*
@@ -95,16 +124,23 @@
 
 #pragma -mark 
 #pragma -mark private 
+/**
+ * 连接融云 服务器
+ */
 - (void)connectedRCloudServer {
-    
+    [self showLoading];
     [[RCIM sharedRCIM] connectWithToken:self.strToken success:^(NSString *userId) {
-        [SIXUserManager savaUserId:userId token:self.strToken];
-//        NSLog(@"%@", [NSThread currentThread]);
+        [self hiddenLoading];
+        
+        [SIXUserManager savaUserPhone:self.phone psw:self.password userId:self.userId token:self.strToken];
+        
         [self connectedSuccessToRCServerUserId:userId];
         
     } error:^(RCConnectErrorCode status) {
+        [self hiddenLoading];
         NSLog(@"登陆的错误码为:%lu", status);
     } tokenIncorrect:^{
+        [self hiddenLoading];
         //token过期或者不正确。
         //如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token
         //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
@@ -125,7 +161,10 @@
 
 
 - (void)connectedSuccessToRCServerUserId:(NSString *)userId {
+    [self showLoading];
     [AFHttpTool getUserInfo:userId success:^(id response) {
+        [self hiddenLoading];
+        
         if ([response[@"code"] intValue] == 200) {
             NSDictionary *result = response[@"result"];
             
@@ -147,15 +186,15 @@
                 [delegate changeRootViewControllerType:EnumRootVCTypeMainTab];
             });
             
-            
-//            [[RCDataBaseManager shareInstance] insertUserToDB:user];
-//            
-//            [DEFAULTS setObject:user.portraitUri forKey:@"userPortraitUri"];
-//            [DEFAULTS setObject:user.name forKey:@"userNickName"];
-//            [DEFAULTS synchronize];
+            /*            
+             //            [[RCDataBaseManager shareInstance] insertUserToDB:user];
+             //            
+             //            [DEFAULTS setObject:user.portraitUri forKey:@"userPortraitUri"];
+             //            [DEFAULTS setObject:user.name forKey:@"userNickName"];
+             //            [DEFAULTS synchronize];*/
         }
     } failure:^(NSError *err) {
-        ;
+        [self hiddenLoading];
     }];
     
     

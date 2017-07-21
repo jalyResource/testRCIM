@@ -11,6 +11,16 @@
 @interface SIXUserManager : NSObject
 
 
-+ (void)savaUserId:(NSString *)userId token:(NSString *)token ;
++ (void)savaUserPhone:(NSString *)phone psw:(NSString *)psw userId:(NSString *)userId token:(NSString *)token ;
+
++ (NSString *)getDefaultPhone ;
+
++ (NSString *)getDefaultPassword ;
+
++ (NSString *)getDefaultUserId ;
+
++ (NSString *)getDefaultToken ;
+    
+    
 
 @end
