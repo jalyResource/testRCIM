@@ -7,17 +7,20 @@
 //
 
 #import "AppDelegate.h"
+#import "AppContext.h"
 #import "SIXLoginViewController.h"
 
 
 @interface AppDelegate ()
-
+@property (strong, nonatomic) SIXNavigationController *rootNavigationController;
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [AppContext setUpDidFinishLaunchingWithOptions];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     SIXLoginViewController *vc = [[SIXLoginViewController alloc] init];
     
@@ -53,5 +56,64 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma -mark 
+#pragma -mark public
+- (void)changeRootViewControllerType:(EnumRootVCType)type {
+    switch (type) {
+        case EnumRootVCTypeLogin: {
+            self.window.rootViewController = [[SIXLoginViewController alloc] init];
+            [self.window makeKeyAndVisible];
+            break;
+        }
+        case EnumRootVCTypeMainTab: {
+            self.window.rootViewController = self.rootNavigationController;
+            [self.window makeKeyAndVisible];
+            break;
+        }
+    }
+}
+
+
+
+#pragma -mark 
+#pragma -mark getter
+- (SIXNavigationController *)rootNavigationController {
+    if (!_rootNavigationController) {
+        SIXMainTabBarController *tabVC = [[SIXMainTabBarController alloc] init];
+        _rootNavigationController = [[SIXNavigationController alloc] initWithRootViewController:tabVC];
+    }
+    return _rootNavigationController;
+}
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

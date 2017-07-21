@@ -20,7 +20,7 @@
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
     if (self = [super initWithRootViewController:rootViewController]) {
-        self.navigationBar.hidden = YES;
+        
     }
     return self;
 }

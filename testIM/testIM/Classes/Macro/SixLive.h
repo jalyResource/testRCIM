@@ -14,13 +14,17 @@
 #import "SIXBaseViewController.h"
 #import "SIXViewController.h"
 #import "SIXNavigationController.h"
-#import "SIXTabBarController.h"
+#import "SIXMainTabBarController.h"
+
+#import "SIXUserManager.h"
 
 
 /** 第三方框架 */
 #import "AFNetworking.h"
 #import <UIImageView+WebCache.h>
 
+/** 融云 */
+#import <RongCloudIM/RongIMKit/RCIM.h>
 
 /** tools */
 #import "SIXHttpRequest.h"

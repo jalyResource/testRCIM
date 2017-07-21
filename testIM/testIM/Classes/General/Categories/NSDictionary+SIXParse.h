@@ -12,4 +12,6 @@
 
 - (NSString *)parseStringWithKey:(NSString *)key ;
 
+- (NSInteger)parseIntegerWithKey:(NSString *)key ;
+
 @end

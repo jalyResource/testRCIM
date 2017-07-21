@@ -10,4 +10,6 @@
 
 @interface AppContext : NSObject
 
++ (void)setUpDidFinishLaunchingWithOptions ;
+
 @end
