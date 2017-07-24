@@ -34,11 +34,20 @@
  */
 - (void)getUserInfoWithUserId:(NSString *)userId
                    completion:(void (^)(RCUserInfo *userInfo))completion {
-    NSString *ID = [[SIXUserManager shareUserManager] getDefaultUserId];
-    NSString *name = [[SIXUserManager shareUserManager] getDefaultName];
-    NSString *portrait = [[SIXUserManager shareUserManager] getDefaultPortrait];
-    RCUserInfo *u = [[RCUserInfo alloc] initWithUserId:ID name:name portrait:portrait];
-    completion(u);
+    NSString *currentUserId = [RCIM sharedRCIM].currentUserInfo.userId;
+    
+    DLog(@"getUserInfoWithUserId:%@ currentUserId:%@", userId, currentUserId);
+    if ([userId isEqualToString:currentUserId]) {
+        NSString *ID = [[SIXUserManager shareUserManager] getDefaultUserId];
+        NSString *name = [[SIXUserManager shareUserManager] getDefaultName];
+        NSString *portrait = [[SIXUserManager shareUserManager] getDefaultPortrait];
+        RCUserInfo *u = [[RCUserInfo alloc] initWithUserId:ID name:name portrait:portrait];
+        completion(u);
+    } else {
+        [SIXDataSourceTool getUserInfoByUserID:userId completion:^(RCUserInfo *user) {
+            completion(user);
+        }];
+    }
 }
 
 
@@ -56,7 +65,9 @@
  */
 - (void)getGroupInfoWithGroupId:(NSString *)groupId
                      completion:(void (^)(RCGroup *groupInfo))completion {
-    
+    DLog(@"getGroupInfoWithGroupId:%@", groupId);
+    RCGroup *group = [[RCGroup alloc] initWithGroupId:groupId groupName:@"groupName" portraitUri:@""];
+    completion(group);
 }
 
 
