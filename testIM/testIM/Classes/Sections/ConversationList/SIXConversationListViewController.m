@@ -7,6 +7,7 @@
 //
 
 #import "SIXConversationListViewController.h"
+#import "SIXConversationViewController.h"
 
 @interface SIXConversationListViewController ()
 
@@ -14,7 +15,8 @@
 
 @implementation SIXConversationListViewController
 
-
+#pragma -mark 
+#pragma -mark life cycle
 - (id)init {
     self = [super init];
     if (self) {
@@ -41,14 +43,41 @@
     self.conversationListTableView.tableFooterView = [UIView new];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma -mark 
+#pragma -mark override method
+//重写RCConversationListViewController的onSelectedTableRow事件
+- (void)onSelectedTableRow:(RCConversationModelType)conversationModelType
+         conversationModel:(RCConversationModel *)model
+               atIndexPath:(NSIndexPath *)indexPath {
+    SIXConversationViewController *conversationVC = [[SIXConversationViewController alloc]init];
+    conversationVC.conversationType = model.conversationType;
+    conversationVC.targetId = model.targetId;
+    conversationVC.title = model.conversationTitle;
+    
+    [self.navigationController pushViewController:conversationVC animated:YES];
 }
-*/
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

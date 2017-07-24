@@ -51,6 +51,7 @@
 		0A5588011F21B74200673AFE /* SIXConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5588001F21B74200673AFE /* SIXConversationListViewController.m */; };
 		0A5588051F21D8C500673AFE /* RCDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5588041F21D8C500673AFE /* RCDUtilities.m */; };
 		0A5588081F21D93700673AFE /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A5588061F21D93700673AFE /* pinyin.c */; };
+		0ADF48281F258DE700C870F2 /* SIXConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF48271F258DE700C870F2 /* SIXConversationViewController.m */; };
 		0EAAA569CFD26546FE938068 /* libPods-testIMTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D61BF194B7EB3FA8D30BE15D /* libPods-testIMTests.a */; };
 		3A69DB110C224CFA63E03B76 /* libPods-testIMUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CFD424D6F5BB43D5A3636A2 /* libPods-testIMUITests.a */; };
 		C61004C1BF3DFC9473E191A7 /* libPods-testIM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755273E79198A366A56AB3 /* libPods-testIM.a */; };
@@ -171,6 +172,8 @@
 		0A5588041F21D8C500673AFE /* RCDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDUtilities.m; sourceTree = "<group>"; };
 		0A5588061F21D93700673AFE /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
 		0A5588071F21D93700673AFE /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		0ADF48261F258DE700C870F2 /* SIXConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXConversationViewController.h; sourceTree = "<group>"; };
+		0ADF48271F258DE700C870F2 /* SIXConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXConversationViewController.m; sourceTree = "<group>"; };
 		0CFD424D6F5BB43D5A3636A2 /* libPods-testIMUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-testIMUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A755273E79198A366A56AB3 /* libPods-testIM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-testIM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE69FD7689A40ED5151952A /* Pods-testIMUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testIMUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-testIMUITests/Pods-testIMUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -602,6 +605,8 @@
 		0A5587FC1F21B64800673AFE /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
+				0ADF48261F258DE700C870F2 /* SIXConversationViewController.h */,
+				0ADF48271F258DE700C870F2 /* SIXConversationViewController.m */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -967,6 +972,7 @@
 				0A5587F21F21A4D500673AFE /* RCDSettingUserDefaults.m in Sources */,
 				0A40254B1F20B70C00D7D230 /* SIXLiveViewController.m in Sources */,
 				0A5587F51F21A7E200673AFE /* NSDictionary+SIXParse.m in Sources */,
+				0ADF48281F258DE700C870F2 /* SIXConversationViewController.m in Sources */,
 				0A5587E51F21A1D900673AFE /* UIAlertView+AFNetworking.m in Sources */,
 				0A40254A1F20B70C00D7D230 /* SIXNavigationBar.m in Sources */,
 				0A4025801F20BF1600D7D230 /* AppContext.m in Sources */,

@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) UIButton *btnLogin;
 @property (strong, nonatomic) UIButton *btnUser1;
+@property (strong, nonatomic) UIButton *btnUser2;
 
 /** Data */
 @property (copy, nonatomic) NSString *strToken;
@@ -40,30 +41,13 @@
     [self adjustLoginState];
 }
 
-- (void)addData {
-    [self.view addSubview:self.txtPhone];
-    [self.view addSubview:self.txtPwd];
-    [self.view addSubview:self.btnLogin];
-    
-    [self.view addSubview:self.btnUser1];
-    
-    CGFloat margin = 30;
-    CGFloat width = SIX_SCREEN_WIDTH - margin * 2;
-    CGFloat height = 35;
-    
-    self.txtPhone.frame = CGRectMake(margin, 80, width, height);
-    self.txtPwd.frame = CGRectMake(margin, 80 + 40, width, height);
-    self.btnLogin.frame = CGRectMake(margin, CGRectGetMaxY(self.txtPwd.frame) + 40, width, height);
-    
-    self.btnUser1.frame = CGRectMake(margin, CGRectGetMaxY(self.btnLogin.frame) + 20, width/2 - margin, height);
+- (void)loadData {
+    self.phone = [[SIXUserManager shareUserManager] getDefaultPhone];
+    self.password = [[SIXUserManager shareUserManager] getDefaultPassword];
+    self.strToken = [[SIXUserManager shareUserManager] getDefaultToken];
+    self.userId = [[SIXUserManager shareUserManager] getDefaultUserId];
 }
 
-- (void)loadData {
-    self.phone = [SIXUserManager getDefaultPhone];
-    self.password = [SIXUserManager getDefaultPassword];
-    self.strToken = [SIXUserManager getDefaultToken];
-    self.userId = [SIXUserManager getDefaultUserId];
-}
 /**
  * 根据 本地 缓存的用户数据，判断是否已经登录
  */
@@ -76,6 +60,28 @@
         [self addData];
     }
 }
+
+- (void)addData {
+    [self.view addSubview:self.txtPhone];
+    [self.view addSubview:self.txtPwd];
+    [self.view addSubview:self.btnLogin];
+    
+    [self.view addSubview:self.btnUser1];
+    [self.view addSubview:self.btnUser2];
+    
+    CGFloat margin = 30;
+    CGFloat width = SIX_SCREEN_WIDTH - margin * 2;
+    CGFloat height = 35;
+    
+    self.txtPhone.frame = CGRectMake(margin, 80, width, height);
+    self.txtPwd.frame = CGRectMake(margin, 80 + 40, width, height);
+    self.btnLogin.frame = CGRectMake(margin, CGRectGetMaxY(self.txtPwd.frame) + 40, width, height);
+    
+    self.btnUser1.frame = CGRectMake(margin, CGRectGetMaxY(self.btnLogin.frame) + 50, width/2 - margin, height);
+    self.btnUser2.frame = CGRectMake(CGRectGetMaxX(self.btnUser1.frame) + margin * 2 , CGRectGetMaxY(self.btnLogin.frame) + 50, width/2 - margin, height);
+}
+
+
 
 #pragma -mark 
 #pragma -mark event response
@@ -121,6 +127,10 @@
     self.txtPhone.text = @"13651037787";
     self.txtPwd.text = @"123456";
 }
+- (void)btnUser2Clicked:(UIButton *)sender {
+    self.txtPhone.text = @"13651023662";
+    self.txtPwd.text = @"123321";
+}
 
 #pragma -mark 
 #pragma -mark private 
@@ -132,7 +142,7 @@
     [[RCIM sharedRCIM] connectWithToken:self.strToken success:^(NSString *userId) {
         [self hiddenLoading];
         
-        [SIXUserManager savaUserPhone:self.phone psw:self.password userId:self.userId token:self.strToken];
+        [[SIXUserManager shareUserManager] savaUserPhone:self.phone psw:self.password userId:self.userId token:self.strToken];
         
         [self connectedSuccessToRCServerUserId:userId];
         
@@ -159,7 +169,9 @@
     }];
 }
 
-
+/**
+ * 连接服务器成功后的处理操作
+ */
 - (void)connectedSuccessToRCServerUserId:(NSString *)userId {
     [self showLoading];
     [AFHttpTool getUserInfo:userId success:^(id response) {
@@ -170,35 +182,39 @@
             
             NSString *nickname = result[@"nickname"];
             NSString *portraitUri = result[@"portraitUri"];
+            
+            [[SIXUserManager shareUserManager] saveUserName:nickname portrait:portraitUri];
             RCUserInfo *user = [[RCUserInfo alloc] initWithUserId:userId
                                                              name:nickname
                                                          portrait:portraitUri];
             if (!user.portraitUri || user.portraitUri.length <= 0) {
                 user.portraitUri = [RCDUtilities defaultUserPortrait:user];
             }
+            
             [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:userId];
             [RCIM sharedRCIM].currentUserInfo = user;
-            
+
             
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 [delegate changeRootViewControllerType:EnumRootVCTypeMainTab];
             });
-            
-            /*            
-             //            [[RCDataBaseManager shareInstance] insertUserToDB:user];
-             //            
-             //            [DEFAULTS setObject:user.portraitUri forKey:@"userPortraitUri"];
-             //            [DEFAULTS setObject:user.name forKey:@"userNickName"];
-             //            [DEFAULTS synchronize];*/
         }
     } failure:^(NSError *err) {
         [self hiddenLoading];
     }];
-    
-    
-    
+    /*
+     {
+         code = 200;
+         result =     {
+             id = dOl3N7KX1;
+             nickname = momo;
+             portraitUri = "";
+         };
+     }
+
+     */
 }
 
 
@@ -224,6 +240,17 @@
         [_btnUser1 addTarget:self action:@selector(btnUser1Clicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnUser1;
+}
+
+- (UIButton *)btnUser2 {
+    if (!_btnUser2) {
+        _btnUser2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_btnUser2 setBackgroundColor:[UIColor blueColor]];
+        [_btnUser2 setTitle:@"User 2" forState:UIControlStateNormal];
+        [_btnUser2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_btnUser2 addTarget:self action:@selector(btnUser2Clicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnUser2;
 }
 
 - (UITextField *)txtPhone {

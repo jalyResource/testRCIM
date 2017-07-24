@@ -28,7 +28,7 @@
 #pragma -mark private
 - (void)setUpSubViewController {
     SIXConversationListViewController *conversationListVC = [[SIXConversationListViewController alloc] init];
-    conversationListVC.tabBarItem.title = @"回话";
+    conversationListVC.tabBarItem.title = @"会话";
     conversationListVC.tabBarItem.image = [UIImage imageNamed:@"tab_btn_chat_list_normal"];
     conversationListVC.tabBarItem.selectedImage = [UIImage imageNamed:@"tab_btn_chat_list_selected"];
     ///  通讯录 发现我的

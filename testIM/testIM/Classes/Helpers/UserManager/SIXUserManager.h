@@ -10,16 +10,19 @@
 
 @interface SIXUserManager : NSObject
 
++ (instancetype)shareUserManager ;
 
-+ (void)savaUserPhone:(NSString *)phone psw:(NSString *)psw userId:(NSString *)userId token:(NSString *)token ;
 
-+ (NSString *)getDefaultPhone ;
+- (void)savaUserPhone:(NSString *)phone psw:(NSString *)psw userId:(NSString *)userId token:(NSString *)token ;
+- (void)saveUserName:(NSString *)name portrait:(NSString *)portrait ;
 
-+ (NSString *)getDefaultPassword ;
+- (NSString *)getDefaultPhone ;
 
-+ (NSString *)getDefaultUserId ;
+- (NSString *)getDefaultPassword ;
 
-+ (NSString *)getDefaultToken ;
+- (NSString *)getDefaultUserId ;
+
+- (NSString *)getDefaultToken ;
     
     
 
