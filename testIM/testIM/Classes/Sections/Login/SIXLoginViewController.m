@@ -102,6 +102,7 @@
         if (200 == code) {
             NSDictionary *dicResult = [((NSDictionary *)response) objectForKey:@"result"];
             self.strToken = [dicResult parseStringWithKey:@"token"];
+            self.userId = [dicResult parseStringWithKey:@"id"];
             
             [self connectedRCloudServer];
         } else {
@@ -193,7 +194,8 @@
             
             [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:userId];
             [RCIM sharedRCIM].currentUserInfo = user;
-
+//            [RCIM sharedRCIM].userInfoDataSource = [SIXUserManager shareUserManager];
+    
             
             
             dispatch_async(dispatch_get_main_queue(), ^{

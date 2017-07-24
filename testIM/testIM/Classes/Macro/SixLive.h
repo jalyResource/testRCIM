@@ -17,6 +17,7 @@
 #import "SIXMainTabBarController.h"
 
 #import "SIXUserManager.h"
+#import "SIXIMDataSource.h"
 
 
 /** 第三方框架 */

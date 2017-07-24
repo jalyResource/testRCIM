@@ -10,7 +10,11 @@ target 'testIM' do
   pod 'SDWebImage', '~> 3.8'
 
   pod 'RongCloudIM/IMLib', '~> 2.8.3'
-  pod 'RongCloudIM/IMKit', '~> 2.8.3'  
+  pod 'RongCloudIM/IMKit', '~> 2.8.3'
+  
+
+  pod 'RongCloudIM/CallLib', '~> 2.8.0'
+  pod 'RongCloudIM/CallKit', '~> 2.8.0'
 
   target 'testIMTests' do
     inherit! :search_paths

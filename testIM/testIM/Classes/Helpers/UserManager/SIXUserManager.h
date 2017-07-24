@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface SIXUserManager : NSObject
 
 + (instancetype)shareUserManager ;
@@ -17,6 +18,10 @@
 - (void)saveUserName:(NSString *)name portrait:(NSString *)portrait ;
 
 - (NSString *)getDefaultPhone ;
+
+- (NSString *)getDefaultName ;
+
+- (NSString *)getDefaultPortrait ;
 
 - (NSString *)getDefaultPassword ;
 

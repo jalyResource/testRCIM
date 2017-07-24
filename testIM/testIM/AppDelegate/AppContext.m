@@ -14,7 +14,17 @@
 @implementation AppContext
 
 + (void)setUpDidFinishLaunchingWithOptions {
+    [self setUpRCIM];
+}
++ (void)setUpRCIM {
     [[RCIM sharedRCIM]initWithAppKey:RONGCLOUD_IM_APPKEY];
+    
+    //设置用户信息源和群组信息源
+    [RCIM sharedRCIM].userInfoDataSource = SHAREIMDataSource;
+    [RCIM sharedRCIM].groupInfoDataSource = SHAREIMDataSource;
+    //设置名片消息功能中联系人信息源和群组信息源
+//    [RCContactCardKit shareInstance].contactsDataSource = SHAREIMDataSource;
+//    [RCContactCardKit shareInstance].groupDataSource = SHAREIMDataSource;
 }
 
 @end

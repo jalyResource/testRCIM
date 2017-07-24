@@ -56,6 +56,24 @@
     
     [self.navigationController pushViewController:conversationVC animated:YES];
 }
+/*
+    即将显示Cell的回调
+
+    @param cell        即将显示的Cell
+    @param indexPath   该Cell对应的会话Cell数据模型在数据源中的索引值
+
+    @discussion 您可以在此回调中修改Cell的一些显示属性。
+*/
+- (void)willDisplayConversationTableCell:(RCConversationBaseCell *)cell
+                             atIndexPath:(NSIndexPath *)indexPath {
+    if ([cell isKindOfClass:[RCConversationCell class]]) {
+        RCConversationCell *conCell = (RCConversationCell *)cell;
+        conCell.conversationTitle.textColor = [UIColor colorWithHex:0x333333];
+//        conCell.conversationTitle.text = @"title";
+        RCConversationModel *model = conCell.model;
+        NSLog(@"title %@", model.conversationTitle);
+    } 
+}
 
 @end
 
