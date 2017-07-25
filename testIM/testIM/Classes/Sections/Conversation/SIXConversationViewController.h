@@ -10,6 +10,4 @@
 
 @interface SIXConversationViewController : RCConversationViewController
 
-@property (strong, nonatomic) RCConversationModel *model;
-
 @end

@@ -50,12 +50,10 @@
 - (void)onSelectedTableRow:(RCConversationModelType)conversationModelType
          conversationModel:(RCConversationModel *)model
                atIndexPath:(NSIndexPath *)indexPath {
-    
     SIXConversationViewController *conversationVC = [[SIXConversationViewController alloc]init];
     conversationVC.conversationType = model.conversationType;
     conversationVC.targetId = model.targetId;
     conversationVC.title = model.conversationTitle;
-    conversationVC.model = model;
     
     [self.navigationController pushViewController:conversationVC animated:YES];
 }
