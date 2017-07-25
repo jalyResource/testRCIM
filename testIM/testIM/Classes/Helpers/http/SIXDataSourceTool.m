@@ -62,6 +62,41 @@
     }];
 }
 
+/**
+ * 根据id获取单个群组
+ */
++ (void)getGroupByID:(NSString *)groupID successCompletion:(void (^)(RCGroup *group))completion {
+    [AFHttpTool getGroupByID:groupID
+                     success:^(id response) {
+                         NSString *code = [NSString stringWithFormat:@"%@", response[@"code"]];
+                         NSDictionary *result = response[@"result"];
+                         if (result && [code isEqualToString:@"200"]) {
+                             
+                             NSString *groupId = [result objectForKey:@"id"];
+                             NSString *groupName = [result objectForKey:@"name"];
+                             NSString *portraitUri = [result objectForKey:@"portraitUri"];
+                             if (!portraitUri || portraitUri.length <= 0) {
+                                 portraitUri = @"";
+                             }
+//                             NSString *creatorId = [result objectForKey:@"creatorId"];
+                             NSString *introduce = [result objectForKey:@"introduce"];
+                             if (!introduce) {
+                                 introduce = @"";
+                             }
+                             
+                             RCGroup *group = [[RCGroup alloc] initWithGroupId:groupId groupName:groupName portraitUri:@""];
+                             completion(group);
+                             
+                         } else {
+                             if (completion) {
+                                 completion(nil);
+                             }
+                         }
+                     }
+                     failure:^(NSError *err) {
+
+                     }];
+}
 
 
 

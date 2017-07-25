@@ -40,6 +40,7 @@
 - (void)viewDidLoad {
     //重写显示相关的接口，必须先调用super，否则会屏蔽SDK默认的处理
     [super viewDidLoad];
+    self.title = @"会话";
     self.conversationListTableView.tableFooterView = [UIView new];
 }
 
@@ -69,9 +70,6 @@
     if ([cell isKindOfClass:[RCConversationCell class]]) {
         RCConversationCell *conCell = (RCConversationCell *)cell;
         conCell.conversationTitle.textColor = [UIColor colorWithHex:0x333333];
-//        conCell.conversationTitle.text = @"title";
-        RCConversationModel *model = conCell.model;
-        NSLog(@"title %@", model.conversationTitle);
     } 
 }
 

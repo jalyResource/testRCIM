@@ -65,9 +65,12 @@
  */
 - (void)getGroupInfoWithGroupId:(NSString *)groupId
                      completion:(void (^)(RCGroup *groupInfo))completion {
-    DLog(@"getGroupInfoWithGroupId:%@", groupId);
-    RCGroup *group = [[RCGroup alloc] initWithGroupId:groupId groupName:@"groupName" portraitUri:@""];
-    completion(group);
+//    DLog(@"getGroupInfoWithGroupId:%@", groupId);
+//    RCGroup *group = [[RCGroup alloc] initWithGroupId:groupId groupName:@"groupName" portraitUri:@""];
+//    completion(group);
+    [SIXDataSourceTool getGroupByID:groupId successCompletion:^(RCGroup *group) {
+        completion(group);
+    }];
 }
 
 
