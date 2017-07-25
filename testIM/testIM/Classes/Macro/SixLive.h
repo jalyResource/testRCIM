@@ -10,30 +10,35 @@
 #define SixLive_h
 
 
+
+
+
+
 /** 公共基类 */
 #import "SIXBaseViewController.h"
 #import "SIXViewController.h"
 #import "SIXNavigationController.h"
 #import "SIXMainTabBarController.h"
+#import "SIXUserInfo.h"
 
+
+/** 管理类 */
 #import "SIXUserManager.h"
 #import "SIXIMDataSource.h"
-
-
-
 
 
 /** 第三方框架 */
 #import "AFNetworking.h"
 #import <UIImageView+WebCache.h>
-
-/** 融云 */
+    // 融云
 #import <RongCloudIM/RongIMKit/RCIM.h>
+
 
 /** tools */
 #import "SIXHttpRequest.h"
 #import "AFHttpTool.h"
 #import "SIXDataSourceTool.h"
+
 
 /** 分类 */
 #import "UIColor+Addition.h"
@@ -42,15 +47,38 @@
 #import "NSString+Addition.h"
 #import "NSDictionary+SIXParse.h"
 
+
+
 /** macro */
 #import "SIXGlobalMacro.h"
 #import "SIXColorMacro.h"
-
-
-
-
+#import "SIXEnum.h"
 
 
 
 
 #endif /* SixLive_h */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

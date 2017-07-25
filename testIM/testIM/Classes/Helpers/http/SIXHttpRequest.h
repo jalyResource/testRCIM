@@ -12,10 +12,7 @@ typedef void(^SuccessBlock)(NSDictionary *responseObject);
 typedef void(^FailureBlock)(NSError *error);
 
 
-typedef NS_ENUM(NSUInteger, EnumHttpCode) {
-    EnumHttpCodeFaile   =  402, // 失败
-    EnumHttpCodeSuccess =  001 // 成功
-};
+
 
 @interface SIXHttpRequest : NSObject
 

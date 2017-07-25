@@ -26,6 +26,12 @@
 		0A40257C1F20BD0700D7D230 /* SIXBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4025791F20BD0700D7D230 /* SIXBaseViewController.m */; };
 		0A40257D1F20BD0700D7D230 /* SIXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40257B1F20BD0700D7D230 /* SIXViewController.m */; };
 		0A4025801F20BF1600D7D230 /* AppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40257F1F20BF1600D7D230 /* AppContext.m */; };
+		0A50F4841F26E2D200FD8C04 /* SIXContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F4831F26E2D200FD8C04 /* SIXContactViewController.m */; };
+		0A50F48A1F26E31800FD8C04 /* SIXContactVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F4891F26E31800FD8C04 /* SIXContactVCModel.m */; };
+		0A50F48E1F26E9C100FD8C04 /* SIXContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F48D1F26E9C100FD8C04 /* SIXContact.m */; };
+		0A50F4951F26EA7400FD8C04 /* SIXUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F4941F26EA7400FD8C04 /* SIXUserInfo.m */; };
+		0A50F4991F26F5B700FD8C04 /* SIXTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F4981F26F5B700FD8C04 /* SIXTableViewCell.m */; };
+		0A50F49C1F26F60600FD8C04 /* SIXContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F49B1F26F60600FD8C04 /* SIXContactCell.m */; };
 		0A5587B31F2193D700673AFE /* SIXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5587B21F2193D700673AFE /* SIXLoginViewController.m */; };
 		0A5587DA1F21A1D900673AFE /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5587B61F21A1D900673AFE /* AFHTTPRequestOperation.m */; };
 		0A5587DB1F21A1D900673AFE /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5587B81F21A1D900673AFE /* AFHTTPRequestOperationManager.m */; };
@@ -121,6 +127,19 @@
 		0A40257B1F20BD0700D7D230 /* SIXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXViewController.m; sourceTree = "<group>"; };
 		0A40257E1F20BF1600D7D230 /* AppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppContext.h; sourceTree = "<group>"; };
 		0A40257F1F20BF1600D7D230 /* AppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppContext.m; sourceTree = "<group>"; };
+		0A50F4821F26E2D200FD8C04 /* SIXContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXContactViewController.h; sourceTree = "<group>"; };
+		0A50F4831F26E2D200FD8C04 /* SIXContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXContactViewController.m; sourceTree = "<group>"; };
+		0A50F4881F26E31800FD8C04 /* SIXContactVCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXContactVCModel.h; sourceTree = "<group>"; };
+		0A50F4891F26E31800FD8C04 /* SIXContactVCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXContactVCModel.m; sourceTree = "<group>"; };
+		0A50F48B1F26E46600FD8C04 /* SIXEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIXEnum.h; sourceTree = "<group>"; };
+		0A50F48C1F26E9C100FD8C04 /* SIXContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXContact.h; sourceTree = "<group>"; };
+		0A50F48D1F26E9C100FD8C04 /* SIXContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXContact.m; sourceTree = "<group>"; };
+		0A50F4931F26EA7400FD8C04 /* SIXUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXUserInfo.h; sourceTree = "<group>"; };
+		0A50F4941F26EA7400FD8C04 /* SIXUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXUserInfo.m; sourceTree = "<group>"; };
+		0A50F4971F26F5B700FD8C04 /* SIXTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXTableViewCell.h; sourceTree = "<group>"; };
+		0A50F4981F26F5B700FD8C04 /* SIXTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXTableViewCell.m; sourceTree = "<group>"; };
+		0A50F49A1F26F60600FD8C04 /* SIXContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXContactCell.h; sourceTree = "<group>"; };
+		0A50F49B1F26F60600FD8C04 /* SIXContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXContactCell.m; sourceTree = "<group>"; };
 		0A5587B11F2193D700673AFE /* SIXLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXLoginViewController.h; sourceTree = "<group>"; };
 		0A5587B21F2193D700673AFE /* SIXLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXLoginViewController.m; sourceTree = "<group>"; };
 		0A5587B51F21A1D900673AFE /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -306,10 +325,11 @@
 		0A4024FF1F20B70C00D7D230 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				0A40250D1F20B70C00D7D230 /* Views */,
+				0A50F48F1F26EA5400FD8C04 /* Models */,
 				0A5587EE1F21A4B300673AFE /* RCFile */,
 				0A4025631F20BA0800D7D230 /* Categories */,
 				0A4025001F20B70C00D7D230 /* Base */,
-				0A40250D1F20B70C00D7D230 /* Views */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -347,6 +367,7 @@
 		0A40250D1F20B70C00D7D230 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A50F4961F26F5AB00FD8C04 /* SIXTableViewCell */,
 				0A40250E1F20B70C00D7D230 /* SIXNavigationBar */,
 			);
 			path = Views;
@@ -377,6 +398,7 @@
 			children = (
 				0A4025131F20B70C00D7D230 /* SIXColorMacro.h */,
 				0A4025141F20B70C00D7D230 /* SIXGlobalMacro.h */,
+				0A50F48B1F26E46600FD8C04 /* SIXEnum.h */,
 				0A4025151F20B70C00D7D230 /* SixLive.h */,
 			);
 			path = Macro;
@@ -525,6 +547,82 @@
 			path = SIXTabBarController;
 			sourceTree = "<group>";
 		};
+		0A50F4851F26E30100FD8C04 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A50F4881F26E31800FD8C04 /* SIXContactVCModel.h */,
+				0A50F4891F26E31800FD8C04 /* SIXContactVCModel.m */,
+				0A50F48C1F26E9C100FD8C04 /* SIXContact.h */,
+				0A50F48D1F26E9C100FD8C04 /* SIXContact.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0A50F4861F26E30100FD8C04 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		0A50F4871F26E30100FD8C04 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A50F49A1F26F60600FD8C04 /* SIXContactCell.h */,
+				0A50F49B1F26F60600FD8C04 /* SIXContactCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0A50F48F1F26EA5400FD8C04 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A50F4931F26EA7400FD8C04 /* SIXUserInfo.h */,
+				0A50F4941F26EA7400FD8C04 /* SIXUserInfo.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0A50F4961F26F5AB00FD8C04 /* SIXTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0A50F4971F26F5B700FD8C04 /* SIXTableViewCell.h */,
+				0A50F4981F26F5B700FD8C04 /* SIXTableViewCell.m */,
+			);
+			path = SIXTableViewCell;
+			sourceTree = "<group>";
+		};
+		0A50F49D1F26FA2600FD8C04 /* SubSections */ = {
+			isa = PBXGroup;
+			children = (
+				0A50F49E1F26FA2600FD8C04 /* Model */,
+				0A50F49F1F26FA2600FD8C04 /* Others */,
+				0A50F4A01F26FA2600FD8C04 /* View */,
+			);
+			path = SubSections;
+			sourceTree = "<group>";
+		};
+		0A50F49E1F26FA2600FD8C04 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0A50F49F1F26FA2600FD8C04 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		0A50F4A01F26FA2600FD8C04 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0A5587B01F2193C700673AFE /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -607,6 +705,12 @@
 		0A5587FB1F21B64800673AFE /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				0A50F4821F26E2D200FD8C04 /* SIXContactViewController.h */,
+				0A50F4831F26E2D200FD8C04 /* SIXContactViewController.m */,
+				0A50F4851F26E30100FD8C04 /* Model */,
+				0A50F4861F26E30100FD8C04 /* Others */,
+				0A50F4871F26E30100FD8C04 /* View */,
+				0A50F49D1F26FA2600FD8C04 /* SubSections */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -962,23 +1066,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A50F4841F26E2D200FD8C04 /* SIXContactViewController.m in Sources */,
 				0A5588081F21D93700673AFE /* pinyin.c in Sources */,
 				0A5587E21F21A1D900673AFE /* AFURLSessionManager.m in Sources */,
 				0A5587E71F21A1D900673AFE /* UIImageView+AFNetworking.m in Sources */,
+				0A50F4991F26F5B700FD8C04 /* SIXTableViewCell.m in Sources */,
 				0A5587E91F21A1D900673AFE /* UIRefreshControl+AFNetworking.m in Sources */,
 				0A5587DF1F21A1D900673AFE /* AFURLConnectionOperation.m in Sources */,
 				0A5588011F21B74200673AFE /* SIXConversationListViewController.m in Sources */,
 				0A40257C1F20BD0700D7D230 /* SIXBaseViewController.m in Sources */,
 				0A5587EA1F21A1D900673AFE /* UIWebView+AFNetworking.m in Sources */,
+				0A50F4951F26EA7400FD8C04 /* SIXUserInfo.m in Sources */,
 				0A5587ED1F21A21900673AFE /* AFHttpTool.m in Sources */,
 				0A5587FA1F21B1C800673AFE /* SIXUserManager.m in Sources */,
 				0ADF48361F2604B000C870F2 /* SIXDataSourceTool.m in Sources */,
 				0A5587DC1F21A1D900673AFE /* AFHTTPSessionManager.m in Sources */,
+				0A50F49C1F26F60600FD8C04 /* SIXContactCell.m in Sources */,
 				0A5587DD1F21A1D900673AFE /* AFNetworkReachabilityManager.m in Sources */,
 				0A40256F1F20BA2C00D7D230 /* NSString+Check.m in Sources */,
 				0A5588051F21D8C500673AFE /* RCDUtilities.m in Sources */,
 				0A40256C1F20BA0800D7D230 /* UIView+Addition.m in Sources */,
 				0A40256A1F20BA0800D7D230 /* NSString+Addition.m in Sources */,
+				0A50F48A1F26E31800FD8C04 /* SIXContactVCModel.m in Sources */,
 				0A40254C1F20B70C00D7D230 /* SIXMainViewController.m in Sources */,
 				0A5587DE1F21A1D900673AFE /* AFSecurityPolicy.m in Sources */,
 				0A5587E81F21A1D900673AFE /* UIProgressView+AFNetworking.m in Sources */,
@@ -999,6 +1108,7 @@
 				0A4025771F20BB2700D7D230 /* SIXMainTabBarController.m in Sources */,
 				0A40256B1F20BA0800D7D230 /* UIColor+Addition.m in Sources */,
 				0A5587E01F21A1D900673AFE /* AFURLRequestSerialization.m in Sources */,
+				0A50F48E1F26E9C100FD8C04 /* SIXContact.m in Sources */,
 				0A5587E31F21A1D900673AFE /* AFNetworkActivityIndicatorManager.m in Sources */,
 				0A5587DA1F21A1D900673AFE /* AFHTTPRequestOperation.m in Sources */,
 				0A5587E41F21A1D900673AFE /* UIActivityIndicatorView+AFNetworking.m in Sources */,

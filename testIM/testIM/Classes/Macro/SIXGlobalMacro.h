@@ -35,15 +35,6 @@
 #define SIX_NAVIGATIONBAR_HEIGHT 45.0
 
 
-/**
- * 切换程序根控制器 的类型
- */
-typedef NS_ENUM(NSUInteger, EnumRootVCType) {
-    EnumRootVCTypeMainTab = 0, // 登录后的 tab vc
-    EnumRootVCTypeLogin   = 1  // 登录界面
-};
-
-
 
 /** 自定义 log */
 #ifdef DEBUG
@@ -54,3 +45,28 @@ typedef NS_ENUM(NSUInteger, EnumRootVCType) {
 
 
 #endif /* SIXGlobalMacro_h */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
