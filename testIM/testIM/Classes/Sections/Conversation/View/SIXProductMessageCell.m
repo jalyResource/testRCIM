@@ -44,7 +44,7 @@ static CGFloat const kMsgContviewH = 80;
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGFloat x = [RCIM sharedRCIM].globalConversationPortraitSize.width + 16;
+    CGFloat x = [RCIM sharedRCIM].globalConversationPortraitSize.width + 16 - 6;
     CGFloat msgContentViewMarginTotal = x * 2;
     CGFloat msgContentViewWidth = self.contentView.width - msgContentViewMarginTotal;
     CGRect frame = self.messageContentView.frame;
@@ -95,7 +95,7 @@ static CGFloat const kMsgContviewH = 80;
 #pragma -mark getter and setter
 - (void)setModel:(RCMessageModel *)model {
     [super setModel:model];
-    
+    // 设置背景图
     NSString *imgName = @"chat_from_bg_normal";
     if (MessageDirection_SEND == model.messageDirection) {
         imgName = @"chat_to_bg_white";
@@ -104,7 +104,7 @@ static CGFloat const kMsgContviewH = 80;
     CGSize imgSize = img.size;
     img = [img stretchableImageWithLeftCapWidth:(imgSize.width * 0.5) topCapHeight:(imgSize.height * 0.8)];
     self.imgViewBackground.image = img;
-    
+    // 设置 其他控件的信息
     [self setMessageContent:model.content];
 }
 
