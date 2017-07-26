@@ -8,8 +8,8 @@
 
 #import "SIXLoginViewController.h"
 #import "AFHttpTool.h"
-#import "AppDelegate.h"
-#import "RCDUtilities.h"
+
+#import "SIXLoginVCModel.h"
 
 
 @interface SIXLoginViewController ()
@@ -22,12 +22,8 @@
 @property (strong, nonatomic) UIButton *btnUser2;
 
 /** Data */
-@property (copy, nonatomic) NSString *strToken;
-@property (copy, nonatomic) NSString *phone;
-@property (copy, nonatomic) NSString *password;
-@property (copy, nonatomic) NSString *userId;
 
-@property (assign, nonatomic) NSUInteger loginFailureTimes;
+@property (strong, nonatomic) SIXLoginVCModel *vcModel;
 
 @end
 
@@ -42,19 +38,16 @@
 }
 
 - (void)loadData {
-    self.phone = [[SIXUserManager shareUserManager] getDefaultPhone];
-    self.password = [[SIXUserManager shareUserManager] getDefaultPassword];
-    self.strToken = [[SIXUserManager shareUserManager] getDefaultToken];
-    self.userId = [[SIXUserManager shareUserManager] getDefaultUserId];
+    [self.vcModel loadLocalData];
 }
 
 /**
  * 根据 本地 缓存的用户数据，判断是否已经登录
  */
 - (void)adjustLoginState {
-    if (0 != self.userId.length && 0!=self.strToken.length && 0!=self.password.length) {
+    if (0 != self.vcModel.userId.length && 0!=self.vcModel.strToken.length && 0!=self.vcModel.password.length) {
         // 已经登录，利用 token 连接融云服务器
-        [self connectedRCloudServer];
+        [self.vcModel connectedRCloudServer];
     } else {
         // 未登录状态，添加 UI
         [self addData];
@@ -92,8 +85,8 @@
     if ( 0 == phone.length || 0 == pwd.length) {
         return;
     }
-    self.phone = phone;
-    self.password = pwd;
+    self.vcModel.phone = phone;
+    self.vcModel.password = pwd;
     
     [self showLoading];
     [AFHttpTool loginWithPhone:phone password:pwd region:@"86" success:^(id response) {
@@ -101,10 +94,10 @@
         NSInteger code = [((NSDictionary *)response) parseIntegerWithKey:@"code"];
         if (200 == code) {
             NSDictionary *dicResult = [((NSDictionary *)response) objectForKey:@"result"];
-            self.strToken = [dicResult parseStringWithKey:@"token"];
-            self.userId = [dicResult parseStringWithKey:@"id"];
+            self.vcModel.strToken = [dicResult parseStringWithKey:@"token"];
+            self.vcModel.userId = [dicResult parseStringWithKey:@"id"];
             
-            [self connectedRCloudServer];
+            [self.vcModel connectedRCloudServer];
         } else {
             DLog(@"login error code : %lu", code);
         }
@@ -135,89 +128,6 @@
 
 #pragma -mark 
 #pragma -mark private 
-/**
- * 连接融云 服务器
- */
-- (void)connectedRCloudServer {
-    [self showLoading];
-    [[RCIM sharedRCIM] connectWithToken:self.strToken success:^(NSString *userId) {
-        [self hiddenLoading];
-        
-        [[SIXUserManager shareUserManager] savaUserPhone:self.phone psw:self.password userId:self.userId token:self.strToken];
-        
-        [self connectedSuccessToRCServerUserId:userId];
-        
-    } error:^(RCConnectErrorCode status) {
-        [self hiddenLoading];
-        NSLog(@"登陆的错误码为:%lu", status);
-    } tokenIncorrect:^{
-        [self hiddenLoading];
-        //token过期或者不正确。
-        //如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token
-        //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
-        NSLog(@"token错误");
-        if (_loginFailureTimes < 1) {
-            _loginFailureTimes++;
-            [AFHttpTool getTokenSuccess:^(id response) {
-                self.strToken = response[@"result"][@"token"];
-//                NSString *userId = response[@"result"][@"userId"];
-                
-                [self connectedRCloudServer];
-            } failure:^(NSError *err) {
-                DLog(@"%@", err);
-            }];
-        }
-    }];
-}
-
-/**
- * 连接服务器成功后的处理操作
- */
-- (void)connectedSuccessToRCServerUserId:(NSString *)userId {
-    [self showLoading];
-    [AFHttpTool getUserInfo:userId success:^(id response) {
-        [self hiddenLoading];
-        
-        if ([response[@"code"] intValue] == 200) {
-            NSDictionary *result = response[@"result"];
-            
-            NSString *nickname = result[@"nickname"];
-            NSString *portraitUri = result[@"portraitUri"];
-            
-            [[SIXUserManager shareUserManager] saveUserName:nickname portrait:portraitUri];
-            RCUserInfo *user = [[RCUserInfo alloc] initWithUserId:userId
-                                                             name:nickname
-                                                         portrait:portraitUri];
-            if (!user.portraitUri || user.portraitUri.length <= 0) {
-                user.portraitUri = [RCDUtilities defaultUserPortrait:user];
-            }
-            
-            [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:userId];
-            [RCIM sharedRCIM].currentUserInfo = user;
-//            [RCIM sharedRCIM].userInfoDataSource = [SIXUserManager shareUserManager];
-    
-            
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                [delegate changeRootViewControllerType:EnumRootVCTypeMainTab];
-            });
-        }
-    } failure:^(NSError *err) {
-        [self hiddenLoading];
-    }];
-    /*
-     {
-         code = 200;
-         result =     {
-             id = dOl3N7KX1;
-             nickname = momo;
-             portraitUri = "";
-         };
-     }
-
-     */
-}
 
 
 #pragma -mark 
@@ -272,4 +182,36 @@
     return _txtPwd;
 }
 
+- (SIXLoginVCModel *)vcModel {
+    if (!_vcModel) {
+        _vcModel = [[SIXLoginVCModel alloc] init];
+        _vcModel.viewController = self;
+    }
+    return _vcModel;
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

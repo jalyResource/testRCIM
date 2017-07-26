@@ -121,7 +121,7 @@ typedef NS_ENUM(NSInteger, RequestMethodType) {
            success:(void (^)(id response))success
            failure:(void (^)(NSError *err))failure;
 
-// get square info
+// get square info  获取 “发现” 信息
 + (void)getSquareInfoSuccess:(void (^)(id response))success
                      Failure:(void (^)(NSError *err))failure;
 // create group
