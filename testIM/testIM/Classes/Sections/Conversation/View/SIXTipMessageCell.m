@@ -38,8 +38,13 @@ static CGFloat const kTipHorizontalMargin = 15.f;
     self.lblTip.frame = CGRectMake(x, y, width, textH);
 }
 
+- (void)setModel:(RCMessageModel *)model {
+    [super setModel:model];
+    
+    [self setMessageContent:model.content];
+}
+
 - (void)setMessageContent:(RCMessageContent *)messageContent {
-    _messageContent = messageContent;
     
     if ([messageContent isKindOfClass:[SIXTipMessageContent class]]) {
         SIXTipMessageContent *tipMessage = (SIXTipMessageContent *)messageContent;

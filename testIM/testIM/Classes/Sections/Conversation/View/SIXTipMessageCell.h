@@ -11,6 +11,5 @@
 
 @interface SIXTipMessageCell : RCMessageBaseCell
 
-@property (strong, nonatomic) RCMessageContent *messageContent;
 
 @end

@@ -10,6 +10,5 @@
 
 @interface SIXProductMessageCell : RCMessageCell
 
-@property (strong, nonatomic) RCMessageContent *messageContent;
 
 @end

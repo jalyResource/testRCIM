@@ -11,6 +11,7 @@
 static CGFloat const kMsgContviewH = 80;
 
 @interface SIXProductMessageCell ()
+@property (strong, nonatomic) UIImageView *imgViewBackground;
 @property (strong, nonatomic) UIImageView *imgViewIcon;
 
 @property (strong, nonatomic) UILabel *lblName;
@@ -24,12 +25,14 @@ static CGFloat const kMsgContviewH = 80;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.messageContentView.backgroundColor = [UIColor whiteColor];
-        self.messageContentView.layer.borderColor = [UIColor grayColor].CGColor;
-        self.messageContentView.layer.borderWidth = 1.;
-        self.messageContentView.layer.cornerRadius = 5;
-        self.messageContentView.layer.masksToBounds = YES;
+//        self.messageContentView.backgroundColor = [UIColor whiteColor];
+//        self.messageContentView.layer.borderColor = [UIColor grayColor].CGColor;
+//        self.messageContentView.layer.borderWidth = 1.;
+//        self.messageContentView.layer.cornerRadius = 5;
+//        self.messageContentView.layer.masksToBounds = YES;
         
+        
+        [self.messageContentView addSubview:self.imgViewBackground];
         [self.messageContentView addSubview:self.imgViewIcon];
         [self.messageContentView addSubview:self.lblPrice];
         [self.messageContentView addSubview:self.lblName];
@@ -48,6 +51,8 @@ static CGFloat const kMsgContviewH = 80;
     frame.origin.x = x;
     frame.size = CGSizeMake(msgContentViewWidth, kMsgContviewH);
     self.messageContentView.frame = frame;
+    self.imgViewBackground.frame = self.messageContentView.bounds;
+    
     // icon
     CGFloat margin = 10;
     CGFloat iconW = kMsgContviewH - margin * 2;
@@ -88,8 +93,22 @@ static CGFloat const kMsgContviewH = 80;
 
 #pragma -mark 
 #pragma -mark getter and setter
+- (void)setModel:(RCMessageModel *)model {
+    [super setModel:model];
+    
+    NSString *imgName = @"chat_from_bg_normal";
+    if (MessageDirection_SEND == model.messageDirection) {
+        imgName = @"chat_to_bg_white";
+    }
+    UIImage *img = [UIImage imageNamed:imgName];
+    CGSize imgSize = img.size;
+    img = [img stretchableImageWithLeftCapWidth:(imgSize.width * 0.5) topCapHeight:(imgSize.height * 0.8)];
+    self.imgViewBackground.image = img;
+    
+    [self setMessageContent:model.content];
+}
+
 - (void)setMessageContent:(RCMessageContent *)messageContent {
-    _messageContent = messageContent;
     
     if ([messageContent isKindOfClass:[SIXProductMessageContent class]]) {
         SIXProductMessageContent *productMessage = (SIXProductMessageContent *)messageContent;
@@ -121,6 +140,14 @@ static CGFloat const kMsgContviewH = 80;
         _lblPrice.textAlignment = NSTextAlignmentLeft;
     }
     return _lblPrice;
+}
+
+- (UIImageView *)imgViewBackground {
+    if (!_imgViewBackground) {
+        _imgViewBackground = [[UIImageView alloc] init];
+        _imgViewBackground.contentMode = UIViewContentModeScaleToFill;
+    }
+    return _imgViewBackground;
 }
 
 - (UIImageView *)imgViewIcon {

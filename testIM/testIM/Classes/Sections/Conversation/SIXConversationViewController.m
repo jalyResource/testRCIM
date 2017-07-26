@@ -84,19 +84,20 @@
 - (void)willDisplayMessageCell:(RCMessageBaseCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 //    cell.baseContentView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
     
-    RCMessageContent *msgContent = nil;
+    RCMessageModel *cellModel = nil;
     if (indexPath.row < self.conversationDataRepository.count) {
-        RCMessageModel *cellModel = self.conversationDataRepository[indexPath.row];
-        msgContent = cellModel.content;
+        cellModel = self.conversationDataRepository[indexPath.row];
     }
 
     
     if ([cell isKindOfClass:[SIXTipMessageCell class]]) {        
-        SIXTipMessageCell *tipCell = (SIXTipMessageCell *)cell;
-        tipCell.messageContent = msgContent;
+//        SIXTipMessageCell *tipCell = (SIXTipMessageCell *)cell;
+//        tipCell.messageContent = msgContent;
+        [cell setModel:cellModel];
     } else if ([cell isKindOfClass:[SIXProductMessageCell class]]) {        
-        SIXProductMessageCell *productCell = (SIXProductMessageCell *)cell;
-        productCell.messageContent = msgContent;
+//        SIXProductMessageCell *productCell = (SIXProductMessageCell *)cell;
+//        productCell.messageContent = msgContent;
+        [cell setModel:cellModel];
     }
 }
 
