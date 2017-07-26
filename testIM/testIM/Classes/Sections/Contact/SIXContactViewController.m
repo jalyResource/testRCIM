@@ -29,19 +29,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self six_setView];
-    [self six_loadData];
+    [self setView];
+    [self loadData];
 }
 
 #pragma -mark 
 #pragma -mark private
 
-- (void)six_setView {
+- (void)setView {
     self.tabBarController.navigationItem.title = @"通讯录";
     [self.view addSubview:self.tableView];
 }
 
-- (void)six_loadData {
+- (void)loadData {
     [self showLoading];
     [self.vcModel fetchFriendListCompletion:^(EnumHttpCode code, NSString *text) {
         [self hiddenLoading];

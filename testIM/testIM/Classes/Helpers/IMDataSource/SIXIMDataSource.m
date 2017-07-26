@@ -8,6 +8,14 @@
 
 #import "SIXIMDataSource.h"
 
+@interface SIXIMDataSource ()
+/** key：群组 id， value：群组 id 列表 */
+@property (strong, nonatomic) NSMutableDictionary<NSString *, NSMutableArray<NSString *> *> *dicGroupMember;
+
+@property (strong, nonatomic) NSMutableDictionary<NSString *, RCUserInfo *> *dicUser;
+
+@end
+
 @implementation SIXIMDataSource
 
 + (instancetype)shareIMDataSource {
@@ -19,6 +27,16 @@
     });
     
     return ins;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.dicGroupMember = [[NSMutableDictionary alloc] init];
+        self.dicUser = [[NSMutableDictionary alloc] init];
+    }
+    return self;
 }
 
 #pragma -mark 
@@ -34,22 +52,68 @@
  */
 - (void)getUserInfoWithUserId:(NSString *)userId
                    completion:(void (^)(RCUserInfo *userInfo))completion {
+    // 查找缓存
+    RCUserInfo *u = [self.dicUser objectForKey:userId];
+    if (u) {
+        completion(u);
+    }
+    // 网络获取
     NSString *currentUserId = [RCIM sharedRCIM].currentUserInfo.userId;
-    
     DLog(@"getUserInfoWithUserId:%@ currentUserId:%@", userId, currentUserId);
     if ([userId isEqualToString:currentUserId]) {
         NSString *ID = [[SIXUserManager shareUserManager] getDefaultUserId];
         NSString *name = [[SIXUserManager shareUserManager] getDefaultName];
         NSString *portrait = [[SIXUserManager shareUserManager] getDefaultPortrait];
         RCUserInfo *u = [[RCUserInfo alloc] initWithUserId:ID name:name portrait:portrait];
+        
+        self.dicUser[userId] = u;
         completion(u);
     } else {
         [SIXDataSourceTool getUserInfoByUserID:userId completion:^(RCUserInfo *user) {
+            self.dicUser[userId] = user;
             completion(user);
         }];
     }
 }
 
+#pragma -mark 
+#pragma -mark RCIMGroupUserInfoDataSource
+/*!
+ 获取用户在群组中的群名片信息
+ 
+ @param userId          用户ID
+ @param groupId         群组ID
+ @param completion      获取群名片信息完成之后需要执行的Block [userInfo:该用户ID在群组中对应的群名片信息]
+ 
+ @discussion 如果您使用了群名片功能，SDK需要通过您实现的群名片信息提供者，获取用户在群组中的名片信息并显示。
+ */
+- (void)getUserInfoWithUserId:(NSString *)userId inGroup:(NSString *)groupId completion:(void (^)(RCUserInfo *userInfo))completion {
+    RCUserInfo *info = [[RCUserInfo alloc] initWithUserId:userId name:@"userName" portrait:@""];
+    completion(info);
+}
+
+
+#pragma -mark 
+#pragma -mark RCIMGroupMemberDataSource
+/*!
+ 获取当前群组成员列表的回调（需要实现用户信息提供者 RCIMUserInfoDataSource）
+ 
+ @param groupId     群ID
+ @param resultBlock 获取成功 [userIdList:群成员ID列表]
+ */
+- (void)getAllMembersOfGroup:(NSString *)groupId
+                      result:(void (^)(NSArray<NSString *> *userIdList))resultBlock {
+    __block NSMutableArray<NSString *> *arrId = [self.dicGroupMember objectForKey:groupId];
+    if (nil == arrId) {
+        [SIXDataSourceTool getGroupMembersWithGroupId:groupId Block:^(NSMutableArray<NSString *> *arr) {
+            arrId = arr;
+            self.dicGroupMember[groupId] = arr;
+            resultBlock(arr);
+        }];
+    } else {
+        resultBlock(arrId);
+    }
+}
 
 
 #pragma -mark 

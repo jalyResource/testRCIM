@@ -15,8 +15,6 @@
 		0A4025451F20B70C00D7D230 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4024FD1F20B70C00D7D230 /* AppDelegate.m */; };
 		0A4025461F20B70C00D7D230 /* SIXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4025031F20B70C00D7D230 /* SIXNavigationController.m */; };
 		0A40254A1F20B70C00D7D230 /* SIXNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4025101F20B70C00D7D230 /* SIXNavigationBar.m */; };
-		0A40254B1F20B70C00D7D230 /* SIXLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4025191F20B70C00D7D230 /* SIXLiveViewController.m */; };
-		0A40254C1F20B70C00D7D230 /* SIXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4025231F20B70C00D7D230 /* SIXMainViewController.m */; };
 		0A40256A1F20BA0800D7D230 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4025651F20BA0800D7D230 /* NSString+Addition.m */; };
 		0A40256B1F20BA0800D7D230 /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4025671F20BA0800D7D230 /* UIColor+Addition.m */; };
 		0A40256C1F20BA0800D7D230 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4025691F20BA0800D7D230 /* UIView+Addition.m */; };
@@ -26,6 +24,8 @@
 		0A40257C1F20BD0700D7D230 /* SIXBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4025791F20BD0700D7D230 /* SIXBaseViewController.m */; };
 		0A40257D1F20BD0700D7D230 /* SIXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40257B1F20BD0700D7D230 /* SIXViewController.m */; };
 		0A4025801F20BF1600D7D230 /* AppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40257F1F20BF1600D7D230 /* AppContext.m */; };
+		0A4EA1AF1F2847330003DAD4 /* SIXMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1AE1F2847330003DAD4 /* SIXMineViewController.m */; };
+		0A4EA1B21F284B7E0003DAD4 /* SIXGroupInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1B11F284B7E0003DAD4 /* SIXGroupInfo.m */; };
 		0A50F4841F26E2D200FD8C04 /* SIXContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F4831F26E2D200FD8C04 /* SIXContactViewController.m */; };
 		0A50F48A1F26E31800FD8C04 /* SIXContactVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F4891F26E31800FD8C04 /* SIXContactVCModel.m */; };
 		0A50F48E1F26E9C100FD8C04 /* SIXContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F48D1F26E9C100FD8C04 /* SIXContact.m */; };
@@ -109,10 +109,6 @@
 		0A4025131F20B70C00D7D230 /* SIXColorMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXColorMacro.h; sourceTree = "<group>"; };
 		0A4025141F20B70C00D7D230 /* SIXGlobalMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXGlobalMacro.h; sourceTree = "<group>"; };
 		0A4025151F20B70C00D7D230 /* SixLive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SixLive.h; sourceTree = "<group>"; };
-		0A4025181F20B70C00D7D230 /* SIXLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXLiveViewController.h; sourceTree = "<group>"; };
-		0A4025191F20B70C00D7D230 /* SIXLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXLiveViewController.m; sourceTree = "<group>"; };
-		0A4025221F20B70C00D7D230 /* SIXMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXMainViewController.h; sourceTree = "<group>"; };
-		0A4025231F20B70C00D7D230 /* SIXMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXMainViewController.m; sourceTree = "<group>"; };
 		0A4025581F20B77900D7D230 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		0A4025641F20BA0800D7D230 /* NSString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
 		0A4025651F20BA0800D7D230 /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
@@ -132,6 +128,10 @@
 		0A40257B1F20BD0700D7D230 /* SIXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXViewController.m; sourceTree = "<group>"; };
 		0A40257E1F20BF1600D7D230 /* AppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppContext.h; sourceTree = "<group>"; };
 		0A40257F1F20BF1600D7D230 /* AppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppContext.m; sourceTree = "<group>"; };
+		0A4EA1AD1F2847330003DAD4 /* SIXMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXMineViewController.h; sourceTree = "<group>"; };
+		0A4EA1AE1F2847330003DAD4 /* SIXMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXMineViewController.m; sourceTree = "<group>"; };
+		0A4EA1B01F284B7E0003DAD4 /* SIXGroupInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXGroupInfo.h; sourceTree = "<group>"; };
+		0A4EA1B11F284B7E0003DAD4 /* SIXGroupInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXGroupInfo.m; sourceTree = "<group>"; };
 		0A50F4821F26E2D200FD8C04 /* SIXContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXContactViewController.h; sourceTree = "<group>"; };
 		0A50F4831F26E2D200FD8C04 /* SIXContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXContactViewController.m; sourceTree = "<group>"; };
 		0A50F4881F26E31800FD8C04 /* SIXContactVCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXContactVCModel.h; sourceTree = "<group>"; };
@@ -427,84 +427,8 @@
 				0A5587FD1F21B64800673AFE /* ConversationList */,
 				0A5587FE1F21B64800673AFE /* Mine */,
 				0A5587B01F2193C700673AFE /* Login */,
-				0A4025171F20B70C00D7D230 /* home(首页) */,
-				0A4025211F20B70C00D7D230 /* Main */,
 			);
 			path = Sections;
-			sourceTree = "<group>";
-		};
-		0A4025171F20B70C00D7D230 /* home(首页) */ = {
-			isa = PBXGroup;
-			children = (
-				0A4025181F20B70C00D7D230 /* SIXLiveViewController.h */,
-				0A4025191F20B70C00D7D230 /* SIXLiveViewController.m */,
-				0A40251A1F20B70C00D7D230 /* SubSections */,
-			);
-			path = "home(首页)";
-			sourceTree = "<group>";
-		};
-		0A40251A1F20B70C00D7D230 /* SubSections */ = {
-			isa = PBXGroup;
-			children = (
-				0A40251B1F20B70C00D7D230 /* CommonList */,
-				0A40251C1F20B70C00D7D230 /* GoodSound(好声音) */,
-				0A40251E1F20B70C00D7D230 /* HotTopic(热门) */,
-				0A40251F1F20B70C00D7D230 /* Local(附近) */,
-				0A4025201F20B70C00D7D230 /* SelectTypePage(筛选类型) */,
-			);
-			path = SubSections;
-			sourceTree = "<group>";
-		};
-		0A40251B1F20B70C00D7D230 /* CommonList */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CommonList;
-			sourceTree = "<group>";
-		};
-		0A40251C1F20B70C00D7D230 /* GoodSound(好声音) */ = {
-			isa = PBXGroup;
-			children = (
-				0A40251D1F20B70C00D7D230 /* Model */,
-			);
-			path = "GoodSound(好声音)";
-			sourceTree = "<group>";
-		};
-		0A40251D1F20B70C00D7D230 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		0A40251E1F20B70C00D7D230 /* HotTopic(热门) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "HotTopic(热门)";
-			sourceTree = "<group>";
-		};
-		0A40251F1F20B70C00D7D230 /* Local(附近) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Local(附近)";
-			sourceTree = "<group>";
-		};
-		0A4025201F20B70C00D7D230 /* SelectTypePage(筛选类型) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "SelectTypePage(筛选类型)";
-			sourceTree = "<group>";
-		};
-		0A4025211F20B70C00D7D230 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				0A4025221F20B70C00D7D230 /* SIXMainViewController.h */,
-				0A4025231F20B70C00D7D230 /* SIXMainViewController.m */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		0A4025261F20B70C00D7D230 /* Vendors */ = {
@@ -594,6 +518,8 @@
 			children = (
 				0A50F4931F26EA7400FD8C04 /* SIXUserInfo.h */,
 				0A50F4941F26EA7400FD8C04 /* SIXUserInfo.m */,
+				0A4EA1B01F284B7E0003DAD4 /* SIXGroupInfo.h */,
+				0A4EA1B11F284B7E0003DAD4 /* SIXGroupInfo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -777,6 +703,8 @@
 		0A5587FE1F21B64800673AFE /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				0A4EA1AD1F2847330003DAD4 /* SIXMineViewController.h */,
+				0A4EA1AE1F2847330003DAD4 /* SIXMineViewController.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1130,7 +1058,6 @@
 				0A40256A1F20BA0800D7D230 /* NSString+Addition.m in Sources */,
 				0A50F4AE1F2748CC00FD8C04 /* SIXProductMessageContent.m in Sources */,
 				0A50F48A1F26E31800FD8C04 /* SIXContactVCModel.m in Sources */,
-				0A40254C1F20B70C00D7D230 /* SIXMainViewController.m in Sources */,
 				0A5587DE1F21A1D900673AFE /* AFSecurityPolicy.m in Sources */,
 				0A50F4A51F2721EE00FD8C04 /* SIXTipMessageContent.m in Sources */,
 				0A5587E81F21A1D900673AFE /* UIProgressView+AFNetworking.m in Sources */,
@@ -1144,7 +1071,6 @@
 				0A4024CA1F20B62D00D7D230 /* main.m in Sources */,
 				0A50F4AB1F27469A00FD8C04 /* SIXConversationModel.m in Sources */,
 				0A5587F21F21A4D500673AFE /* RCDSettingUserDefaults.m in Sources */,
-				0A40254B1F20B70C00D7D230 /* SIXLiveViewController.m in Sources */,
 				0A5587F51F21A7E200673AFE /* NSDictionary+SIXParse.m in Sources */,
 				0ADF48281F258DE700C870F2 /* SIXConversationViewController.m in Sources */,
 				0A5587E51F21A1D900673AFE /* UIAlertView+AFNetworking.m in Sources */,
@@ -1153,9 +1079,11 @@
 				0A4025461F20B70C00D7D230 /* SIXNavigationController.m in Sources */,
 				0A4025771F20BB2700D7D230 /* SIXMainTabBarController.m in Sources */,
 				0A40256B1F20BA0800D7D230 /* UIColor+Addition.m in Sources */,
+				0A4EA1B21F284B7E0003DAD4 /* SIXGroupInfo.m in Sources */,
 				0A5587E01F21A1D900673AFE /* AFURLRequestSerialization.m in Sources */,
 				0A50F48E1F26E9C100FD8C04 /* SIXContact.m in Sources */,
 				0A5587E31F21A1D900673AFE /* AFNetworkActivityIndicatorManager.m in Sources */,
+				0A4EA1AF1F2847330003DAD4 /* SIXMineViewController.m in Sources */,
 				0A5587DA1F21A1D900673AFE /* AFHTTPRequestOperation.m in Sources */,
 				0A5587E41F21A1D900673AFE /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				0A5587E11F21A1D900673AFE /* AFURLResponseSerialization.m in Sources */,

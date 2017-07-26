@@ -11,6 +11,33 @@
 @implementation SIXDataSourceTool
 
 /**
+ * 根据groupId获取群组成员信息
+ */
++ (void)getGroupMembersWithGroupId:(NSString *)groupId Block:(void (^)(NSMutableArray<NSString *> *arr))block {
+    
+    [AFHttpTool getGroupMembersByID:groupId success:^(id response) {
+        NSInteger code = [response parseIntegerWithKey:@"code"];
+        if ( 200 == code) {
+            NSArray<NSDictionary *> *arrResult = [response objectForKey:@"result"];
+            NSMutableArray<NSString *> *arr = [[NSMutableArray alloc] init];
+            
+            for (NSDictionary *dic in arrResult) {
+                NSDictionary *dicUser = dic[@"user"];
+                NSString *userId = [dicUser parseStringWithKey:@"id"];
+                [arr addObject:userId];
+            }
+            
+            block(arr);
+        }
+    } failure:^(NSError *err) {
+        block(@[].mutableCopy);
+    }];
+}
+
+
+
+
+/**
  * 根据userId获取单个用户信息
  */
 + (void)getUserInfoByUserID:(NSString *)userID completion:(void (^)(RCUserInfo *user))completion {

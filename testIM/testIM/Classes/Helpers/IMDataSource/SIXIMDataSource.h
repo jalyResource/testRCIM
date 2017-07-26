@@ -12,7 +12,7 @@
 #define SHAREIMDataSource [SIXIMDataSource shareIMDataSource]
 
 @interface SIXIMDataSource : NSObject<
-    RCIMUserInfoDataSource, RCIMGroupInfoDataSource
+    RCIMUserInfoDataSource, RCIMGroupInfoDataSource, RCIMGroupUserInfoDataSource, RCIMGroupMemberDataSource
 >
 
 + (instancetype)shareIMDataSource ;

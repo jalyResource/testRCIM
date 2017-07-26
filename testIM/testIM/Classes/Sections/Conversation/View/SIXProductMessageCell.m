@@ -53,6 +53,7 @@ static CGFloat const kMsgContviewH = 80;
     CGFloat iconW = kMsgContviewH - margin * 2;
     self.imgViewIcon.frame = CGRectMake(margin, margin, iconW, iconW);
     
+    
     // name
     CGFloat nameX = margin * 2 + iconW;
     CGFloat nameW = msgContentViewWidth  - nameX - margin;

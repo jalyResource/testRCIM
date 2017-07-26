@@ -20,4 +20,9 @@
  */
 + (void)getGroupByID:(NSString *)groupID successCompletion:(void (^)(RCGroup *group))completion ;
 
+/**
+ * 根据groupId获取群组成员信息
+ */
++ (void)getGroupMembersWithGroupId:(NSString *)groupId Block:(void (^)(NSMutableArray<NSString *> *arr))block ;
+
 @end

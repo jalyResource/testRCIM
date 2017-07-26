@@ -22,6 +22,8 @@
     //设置用户信息源和群组信息源
     [RCIM sharedRCIM].userInfoDataSource = SHAREIMDataSource;
     [RCIM sharedRCIM].groupInfoDataSource = SHAREIMDataSource;
+    [RCIM sharedRCIM].groupUserInfoDataSource = SHAREIMDataSource;
+    [RCIM sharedRCIM].groupMemberDataSource = SHAREIMDataSource;
     [RCIM sharedRCIM].enablePersistentUserInfoCache = YES;
     //设置名片消息功能中联系人信息源和群组信息源
 //    [RCContactCardKit shareInstance].contactsDataSource = SHAREIMDataSource;
