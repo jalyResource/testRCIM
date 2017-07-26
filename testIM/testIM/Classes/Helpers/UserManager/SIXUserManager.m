@@ -62,7 +62,13 @@
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"token"];
 }
 
-
+- (void)logout {
+    NSArray<NSString *> *arrOfKey = @[@"phone", @"password", @"userId", @"token", @"portrait", @"name"];
+    for (NSString *key in arrOfKey) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 
 @end

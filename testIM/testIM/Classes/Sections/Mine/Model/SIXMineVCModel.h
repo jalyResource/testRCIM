@@ -29,5 +29,8 @@ typedef NS_ENUM(NSUInteger, EnumMineCellType) {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath ;
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath fromVC:(__kindof SIXViewController *)viewController ;
+
+
 
 @end

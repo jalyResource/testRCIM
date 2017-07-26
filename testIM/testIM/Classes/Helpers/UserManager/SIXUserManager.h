@@ -28,6 +28,8 @@
 - (NSString *)getDefaultUserId ;
 
 - (NSString *)getDefaultToken ;
+
+- (void)logout ;
     
     
 

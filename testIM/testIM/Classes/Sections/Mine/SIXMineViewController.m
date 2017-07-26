@@ -9,6 +9,9 @@
 #import "SIXMineViewController.h"
 #import "SIXMineVCModel.h"
 
+
+
+
 @interface SIXMineViewController ()<UITableViewDelegate, UITableViewDataSource>
 /** UI */
 @property (strong, nonatomic) UITableView *tableView;
@@ -31,6 +34,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.title = @"我的";
+//    DLog(@"\n\n\n naviController: %@ \n\n", self.navigationController);
 }
 
 - (void)setUp {
@@ -43,7 +47,7 @@
     
     self.tableView.tableHeaderView = ({
         UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SIX_SCREEN_WIDTH, 10)];
-        v.backgroundColor = [UIColor orangeColor];
+        v.backgroundColor = [UIColor clearColor];
         v;
     });
 }
@@ -75,7 +79,6 @@
             NSString *portrait = [[SIXUserManager shareUserManager] getDefaultPortrait];
             
             [((SIXMineInfoCell *)cell) setName:name portrait:portrait]; 
-            
             break;
         }
         case EnumMineCellTypeFeedback: {
@@ -83,7 +86,7 @@
             break;
         }
         case EnumMineCellTypeLogout: {
-            [((SIXMineNormalCell *)cell) setText:@"意见反馈"];
+            [((SIXMineNormalCell *)cell) setText:@"退出登录"];
             break;
         }
     }
@@ -94,7 +97,7 @@
 #pragma -mark 
 #pragma -mark UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.vcModel tableView:tableView didSelectRowAtIndexPath:indexPath fromVC:self];
     /*
      SIXContact *model = [self.vcModel contactAtIndexPath:indexPath];
      
@@ -117,6 +120,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.5;
 }
+
+
+
 
 
 #pragma -mark 

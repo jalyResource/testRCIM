@@ -62,6 +62,7 @@
     switch (type) {
         case EnumRootVCTypeLogin: {
             self.window.rootViewController = [[SIXLoginViewController alloc] init];
+            _rootNavigationController = nil;
             [self.window makeKeyAndVisible];
             break;
         }

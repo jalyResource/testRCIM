@@ -30,6 +30,7 @@
 		0A4EA1BB1F287F880003DAD4 /* SIXMineInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1BA1F287F880003DAD4 /* SIXMineInfoCell.m */; };
 		0A4EA1BD1F2880A20003DAD4 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EA1BC1F2880A20003DAD4 /* Storyboard.storyboard */; };
 		0A4EA1C01F2883290003DAD4 /* SIXMineNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1BF1F2883290003DAD4 /* SIXMineNormalCell.m */; };
+		0A4EA1C71F2894C30003DAD4 /* SIXCustomerServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1C61F2894C30003DAD4 /* SIXCustomerServiceViewController.m */; };
 		0A50F4841F26E2D200FD8C04 /* SIXContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F4831F26E2D200FD8C04 /* SIXContactViewController.m */; };
 		0A50F48A1F26E31800FD8C04 /* SIXContactVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F4891F26E31800FD8C04 /* SIXContactVCModel.m */; };
 		0A50F48E1F26E9C100FD8C04 /* SIXContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F48D1F26E9C100FD8C04 /* SIXContact.m */; };
@@ -143,6 +144,8 @@
 		0A4EA1BC1F2880A20003DAD4 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		0A4EA1BE1F2883290003DAD4 /* SIXMineNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXMineNormalCell.h; sourceTree = "<group>"; };
 		0A4EA1BF1F2883290003DAD4 /* SIXMineNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXMineNormalCell.m; sourceTree = "<group>"; };
+		0A4EA1C51F2894C30003DAD4 /* SIXCustomerServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXCustomerServiceViewController.h; sourceTree = "<group>"; };
+		0A4EA1C61F2894C30003DAD4 /* SIXCustomerServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXCustomerServiceViewController.m; sourceTree = "<group>"; };
 		0A50F4821F26E2D200FD8C04 /* SIXContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXContactViewController.h; sourceTree = "<group>"; };
 		0A50F4831F26E2D200FD8C04 /* SIXContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXContactViewController.m; sourceTree = "<group>"; };
 		0A50F4881F26E31800FD8C04 /* SIXContactVCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXContactVCModel.h; sourceTree = "<group>"; };
@@ -525,6 +528,39 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		0A4EA1C11F2893B50003DAD4 /* SubSections */ = {
+			isa = PBXGroup;
+			children = (
+				0A4EA1C21F2893B50003DAD4 /* CustomerService */,
+			);
+			path = SubSections;
+			sourceTree = "<group>";
+		};
+		0A4EA1C21F2893B50003DAD4 /* CustomerService */ = {
+			isa = PBXGroup;
+			children = (
+				0A4EA1C31F2893B50003DAD4 /* Model */,
+				0A4EA1C41F2893B50003DAD4 /* View */,
+				0A4EA1C51F2894C30003DAD4 /* SIXCustomerServiceViewController.h */,
+				0A4EA1C61F2894C30003DAD4 /* SIXCustomerServiceViewController.m */,
+			);
+			path = CustomerService;
+			sourceTree = "<group>";
+		};
+		0A4EA1C31F2893B50003DAD4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0A4EA1C41F2893B50003DAD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0A50F4851F26E30100FD8C04 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -747,6 +783,7 @@
 				0A4EA1B31F287E850003DAD4 /* Model */,
 				0A4EA1B51F287E850003DAD4 /* View */,
 				0A4EA1B41F287E850003DAD4 /* Others */,
+				0A4EA1C11F2893B50003DAD4 /* SubSections */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1109,6 +1146,7 @@
 				0A4025731F20BA6E00D7D230 /* SIXHttpRequest.m in Sources */,
 				0AD65B2C1F27501C00C2BE48 /* SIXProductMessageCell.m in Sources */,
 				0A5587E61F21A1D900673AFE /* UIButton+AFNetworking.m in Sources */,
+				0A4EA1C71F2894C30003DAD4 /* SIXCustomerServiceViewController.m in Sources */,
 				0A4025451F20B70C00D7D230 /* AppDelegate.m in Sources */,
 				0A40257D1F20BD0700D7D230 /* SIXViewController.m in Sources */,
 				0A5587DB1F21A1D900673AFE /* AFHTTPRequestOperationManager.m in Sources */,
