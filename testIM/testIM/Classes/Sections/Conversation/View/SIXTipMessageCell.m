@@ -38,11 +38,16 @@ static CGFloat const kTipHorizontalMargin = 15.f;
     self.lblTip.frame = CGRectMake(x, y, width, textH);
 }
 
-- (void)setTipMessage:(SIXTipMessageContent *)tipMessage {
-    _tipMessage = tipMessage;
-    self.lblTip.text = tipMessage.tipText;
+- (void)setMessageContent:(RCMessageContent *)messageContent {
+    _messageContent = messageContent;
     
-    [self setNeedsLayout];
+    if ([messageContent isKindOfClass:[SIXTipMessageContent class]]) {
+        SIXTipMessageContent *tipMessage = (SIXTipMessageContent *)messageContent;
+        
+        self.lblTip.text = tipMessage.tipText;
+        
+        [self setNeedsLayout];
+    }
 }
 
 /*!

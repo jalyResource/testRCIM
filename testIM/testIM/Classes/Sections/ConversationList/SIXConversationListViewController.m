@@ -55,7 +55,7 @@
     conversationVC.conversationType = model.conversationType;
     conversationVC.targetId = model.targetId;
     conversationVC.title = model.conversationTitle;
-    conversationVC.model = model;
+    conversationVC.conversationModel = model;
     
     [self.navigationController pushViewController:conversationVC animated:YES];
 }

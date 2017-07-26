@@ -32,6 +32,10 @@
 #import <UIImageView+WebCache.h>
     // 融云
 #import <RongCloudIM/RongIMKit/RCIM.h>
+    // 自定义消息类型
+#import "SIXTipMessageContent.h"
+#import "SIXProductMessageContent.h"
+
 
 
 /** tools */

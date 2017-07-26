@@ -7,7 +7,6 @@
 //
 
 #import "AppContext.h"
-#import "SIXTipMessageContent.h"
 
 
 #define RONGCLOUD_IM_APPKEY @"n19jmcy59f1q9" //online key
@@ -23,12 +22,17 @@
     //设置用户信息源和群组信息源
     [RCIM sharedRCIM].userInfoDataSource = SHAREIMDataSource;
     [RCIM sharedRCIM].groupInfoDataSource = SHAREIMDataSource;
+    [RCIM sharedRCIM].enablePersistentUserInfoCache = YES;
     //设置名片消息功能中联系人信息源和群组信息源
 //    [RCContactCardKit shareInstance].contactsDataSource = SHAREIMDataSource;
 //    [RCContactCardKit shareInstance].groupDataSource = SHAREIMDataSource;
     
     // 自定义消息类型
     [[RCIM sharedRCIM] registerMessageType:[SIXTipMessageContent class]];
+    [[RCIM sharedRCIM] registerMessageType:[SIXProductMessageContent class]];
+
+    
+    
 }
 
 @end

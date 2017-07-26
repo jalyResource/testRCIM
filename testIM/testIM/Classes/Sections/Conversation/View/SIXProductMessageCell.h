@@ -1,5 +1,5 @@
 //
-//  SIXTipMessageCell.h
+//  SIXProductMessageCell.h
 //  testIM
 //
 //  Created by li’Pro on 2017/7/25.
@@ -7,9 +7,8 @@
 //
 
 #import <RongIMKit/RongIMKit.h>
-@class SIXTipMessageContent;
 
-@interface SIXTipMessageCell : RCMessageBaseCell
+@interface SIXProductMessageCell : RCMessageCell
 
 @property (strong, nonatomic) RCMessageContent *messageContent;
 
