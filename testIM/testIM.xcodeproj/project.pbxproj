@@ -26,6 +26,10 @@
 		0A4025801F20BF1600D7D230 /* AppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40257F1F20BF1600D7D230 /* AppContext.m */; };
 		0A4EA1AF1F2847330003DAD4 /* SIXMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1AE1F2847330003DAD4 /* SIXMineViewController.m */; };
 		0A4EA1B21F284B7E0003DAD4 /* SIXGroupInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1B11F284B7E0003DAD4 /* SIXGroupInfo.m */; };
+		0A4EA1B81F287EB50003DAD4 /* SIXMineVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1B71F287EB50003DAD4 /* SIXMineVCModel.m */; };
+		0A4EA1BB1F287F880003DAD4 /* SIXMineInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1BA1F287F880003DAD4 /* SIXMineInfoCell.m */; };
+		0A4EA1BD1F2880A20003DAD4 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A4EA1BC1F2880A20003DAD4 /* Storyboard.storyboard */; };
+		0A4EA1C01F2883290003DAD4 /* SIXMineNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1BF1F2883290003DAD4 /* SIXMineNormalCell.m */; };
 		0A50F4841F26E2D200FD8C04 /* SIXContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F4831F26E2D200FD8C04 /* SIXContactViewController.m */; };
 		0A50F48A1F26E31800FD8C04 /* SIXContactVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F4891F26E31800FD8C04 /* SIXContactVCModel.m */; };
 		0A50F48E1F26E9C100FD8C04 /* SIXContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F48D1F26E9C100FD8C04 /* SIXContact.m */; };
@@ -132,6 +136,13 @@
 		0A4EA1AE1F2847330003DAD4 /* SIXMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXMineViewController.m; sourceTree = "<group>"; };
 		0A4EA1B01F284B7E0003DAD4 /* SIXGroupInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXGroupInfo.h; sourceTree = "<group>"; };
 		0A4EA1B11F284B7E0003DAD4 /* SIXGroupInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXGroupInfo.m; sourceTree = "<group>"; };
+		0A4EA1B61F287EB50003DAD4 /* SIXMineVCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXMineVCModel.h; sourceTree = "<group>"; };
+		0A4EA1B71F287EB50003DAD4 /* SIXMineVCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXMineVCModel.m; sourceTree = "<group>"; };
+		0A4EA1B91F287F880003DAD4 /* SIXMineInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXMineInfoCell.h; sourceTree = "<group>"; };
+		0A4EA1BA1F287F880003DAD4 /* SIXMineInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXMineInfoCell.m; sourceTree = "<group>"; };
+		0A4EA1BC1F2880A20003DAD4 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		0A4EA1BE1F2883290003DAD4 /* SIXMineNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXMineNormalCell.h; sourceTree = "<group>"; };
+		0A4EA1BF1F2883290003DAD4 /* SIXMineNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXMineNormalCell.m; sourceTree = "<group>"; };
 		0A50F4821F26E2D200FD8C04 /* SIXContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXContactViewController.h; sourceTree = "<group>"; };
 		0A50F4831F26E2D200FD8C04 /* SIXContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXContactViewController.m; sourceTree = "<group>"; };
 		0A50F4881F26E31800FD8C04 /* SIXContactVCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXContactVCModel.h; sourceTree = "<group>"; };
@@ -486,6 +497,34 @@
 			path = SIXTabBarController;
 			sourceTree = "<group>";
 		};
+		0A4EA1B31F287E850003DAD4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A4EA1B61F287EB50003DAD4 /* SIXMineVCModel.h */,
+				0A4EA1B71F287EB50003DAD4 /* SIXMineVCModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0A4EA1B41F287E850003DAD4 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		0A4EA1B51F287E850003DAD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A4EA1B91F287F880003DAD4 /* SIXMineInfoCell.h */,
+				0A4EA1BA1F287F880003DAD4 /* SIXMineInfoCell.m */,
+				0A4EA1BE1F2883290003DAD4 /* SIXMineNormalCell.h */,
+				0A4EA1BF1F2883290003DAD4 /* SIXMineNormalCell.m */,
+				0A4EA1BC1F2880A20003DAD4 /* Storyboard.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0A50F4851F26E30100FD8C04 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,6 +744,9 @@
 			children = (
 				0A4EA1AD1F2847330003DAD4 /* SIXMineViewController.h */,
 				0A4EA1AE1F2847330003DAD4 /* SIXMineViewController.m */,
+				0A4EA1B31F287E850003DAD4 /* Model */,
+				0A4EA1B51F287E850003DAD4 /* View */,
+				0A4EA1B41F287E850003DAD4 /* Others */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -873,6 +915,7 @@
 			files = (
 				0A4024D81F20B62D00D7D230 /* LaunchScreen.storyboard in Resources */,
 				0A4024D51F20B62D00D7D230 /* Assets.xcassets in Resources */,
+				0A4EA1BD1F2880A20003DAD4 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,12 +1093,14 @@
 				0A5587FA1F21B1C800673AFE /* SIXUserManager.m in Sources */,
 				0ADF48361F2604B000C870F2 /* SIXDataSourceTool.m in Sources */,
 				0A5587DC1F21A1D900673AFE /* AFHTTPSessionManager.m in Sources */,
+				0A4EA1C01F2883290003DAD4 /* SIXMineNormalCell.m in Sources */,
 				0A50F49C1F26F60600FD8C04 /* SIXContactCell.m in Sources */,
 				0A5587DD1F21A1D900673AFE /* AFNetworkReachabilityManager.m in Sources */,
 				0A40256F1F20BA2C00D7D230 /* NSString+Check.m in Sources */,
 				0A5588051F21D8C500673AFE /* RCDUtilities.m in Sources */,
 				0A40256C1F20BA0800D7D230 /* UIView+Addition.m in Sources */,
 				0A40256A1F20BA0800D7D230 /* NSString+Addition.m in Sources */,
+				0A4EA1BB1F287F880003DAD4 /* SIXMineInfoCell.m in Sources */,
 				0A50F4AE1F2748CC00FD8C04 /* SIXProductMessageContent.m in Sources */,
 				0A50F48A1F26E31800FD8C04 /* SIXContactVCModel.m in Sources */,
 				0A5587DE1F21A1D900673AFE /* AFSecurityPolicy.m in Sources */,
@@ -1081,6 +1126,7 @@
 				0A40256B1F20BA0800D7D230 /* UIColor+Addition.m in Sources */,
 				0A4EA1B21F284B7E0003DAD4 /* SIXGroupInfo.m in Sources */,
 				0A5587E01F21A1D900673AFE /* AFURLRequestSerialization.m in Sources */,
+				0A4EA1B81F287EB50003DAD4 /* SIXMineVCModel.m in Sources */,
 				0A50F48E1F26E9C100FD8C04 /* SIXContact.m in Sources */,
 				0A5587E31F21A1D900673AFE /* AFNetworkActivityIndicatorManager.m in Sources */,
 				0A4EA1AF1F2847330003DAD4 /* SIXMineViewController.m in Sources */,

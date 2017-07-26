@@ -33,11 +33,15 @@
     [self loadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.navigationItem.title = @"通讯录";
+}
+
 #pragma -mark 
 #pragma -mark private
 
 - (void)setView {
-    self.tabBarController.navigationItem.title = @"通讯录";
     [self.view addSubview:self.tableView];
 }
 

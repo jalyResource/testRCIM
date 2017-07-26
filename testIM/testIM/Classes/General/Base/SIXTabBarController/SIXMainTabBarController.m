@@ -9,6 +9,7 @@
 #import "SIXMainTabBarController.h"
 #import "SIXConversationListViewController.h"
 #import "SIXContactViewController.h"
+#import "SIXMineViewController.h"
 
 @interface SIXMainTabBarController ()
 
@@ -31,14 +32,22 @@
     conversationListVC.tabBarItem.title = @"会话";
     conversationListVC.tabBarItem.image = [UIImage imageNamed:@"tab_btn_chat_list_normal"];
     conversationListVC.tabBarItem.selectedImage = [UIImage imageNamed:@"tab_btn_chat_list_selected"];
-    ///  通讯录 发现我的
+    ///  通讯录 发现
     
     SIXContactViewController *contactVC = [[SIXContactViewController alloc] init];
     contactVC.tabBarItem.title = @"通讯录";
     contactVC.tabBarItem.image = [UIImage imageNamed:@"tab_btn_contact_normal"];
     contactVC.tabBarItem.selectedImage = [UIImage imageNamed:@"tab_btn_contact_selected"];
     
-    NSArray<UIViewController *> *arrVC = @[conversationListVC, contactVC];
+    // 我的
+    SIXMineViewController *mineVC = [[SIXMineViewController alloc] init];
+    mineVC.tabBarItem.title = @"我的";
+    mineVC.tabBarItem.image = [UIImage imageNamed:@"tab_btn_contact_normal"];
+    mineVC.tabBarItem.selectedImage = [UIImage imageNamed:@"tab_btn_contact_selected"];
+    
+    
+    
+    NSArray<UIViewController *> *arrVC = @[conversationListVC, contactVC, mineVC];
     self.viewControllers = arrVC;
 }
 
