@@ -14,6 +14,8 @@
 @optional
 - (void)productMessageCell:(SIXProductMessageCell *)productMessageCell didTapProductModel:(RCMessageModel *)messageModel ;
 
+- (void)productMessageCell:(SIXProductMessageCell *)productMessageCell deleteMessage:(RCMessageModel *)model ;
+
 @end
 
 @interface SIXProductMessageCell : RCMessageCell

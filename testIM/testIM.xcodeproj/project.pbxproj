@@ -818,8 +818,8 @@
 				0A50F4821F26E2D200FD8C04 /* SIXContactViewController.h */,
 				0A50F4831F26E2D200FD8C04 /* SIXContactViewController.m */,
 				0A50F4851F26E30100FD8C04 /* Model */,
-				0A50F4861F26E30100FD8C04 /* Others */,
 				0A50F4871F26E30100FD8C04 /* View */,
+				0A50F4861F26E30100FD8C04 /* Others */,
 				0A50F49D1F26FA2600FD8C04 /* SubSections */,
 			);
 			path = Contact;

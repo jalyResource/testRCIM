@@ -17,6 +17,7 @@ static CGFloat const kMsgContviewH = 80;
 @property (strong, nonatomic) UILabel *lblName;
 @property (strong, nonatomic) UILabel *lblPrice;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGesture;
+@property (strong, nonatomic) UILongPressGestureRecognizer *longPressGesture;
 
 
 @end
@@ -34,6 +35,7 @@ static CGFloat const kMsgContviewH = 80;
 //        self.messageContentView.layer.masksToBounds = YES;
         
         [self.contentView addGestureRecognizer:self.tapGesture];
+        [self.contentView addGestureRecognizer:self.longPressGesture];
         
         [self.messageContentView addSubview:self.imgViewBackground];
         [self.messageContentView addSubview:self.imgViewIcon];
@@ -111,6 +113,44 @@ static CGFloat const kMsgContviewH = 80;
     } 
 }
 
+- (void)longPressGestureDidPressed:(UILongPressGestureRecognizer *)gesture {
+    UIMenuController *menuController = [UIMenuController sharedMenuController];
+    
+    CGRect rect = self.messageContentView.bounds;
+    rect.origin.y = 10;
+    rect.size.height -= 20;
+    [menuController setTargetRect:rect inView:self.messageContentView];
+    [menuController setMenuVisible:YES animated:YES];
+    [self becomeFirstResponder];
+}
+
+#pragma -mark 
+#pragma -mark private : UIMenuItem
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+- (BOOL)canPerformAction:(SEL)action withSender:(nullable id)sender {
+    NSArray<NSString *> *arrSel = @[@"copy:", @"delete:"];
+    
+    NSString *strAction = NSStringFromSelector(action);
+    if ([arrSel containsObject:strAction]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)copy:(nullable id)sender {
+    UIPasteboard *pastB = [UIPasteboard generalPasteboard];
+    SIXProductMessageContent *productMessage = (SIXProductMessageContent *)self.model.content;
+    [pastB setString:productMessage.url];
+}
+
+- (void)delete:(nullable id)sender {
+    if ([self.productDelegate respondsToSelector:@selector(productMessageCell:deleteMessage:)]) {
+        [self.productDelegate productMessageCell:self deleteMessage:self.model]; 
+    }
+}
+
 #pragma -mark 
 #pragma -mark getter and setter
 - (void)setModel:(RCMessageModel *)model {
@@ -146,6 +186,12 @@ static CGFloat const kMsgContviewH = 80;
         _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureDidClicked:)];
     }
     return _tapGesture;
+}
+- (UILongPressGestureRecognizer *)longPressGesture {
+    if (!_longPressGesture) {
+        _longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureDidPressed:)];
+    }
+    return _longPressGesture;
 }
 
 - (UILabel *)lblName {
