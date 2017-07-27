@@ -46,6 +46,12 @@
     if (ConversationType_PRIVATE == self.conversationType || ConversationType_CUSTOMERSERVICE == self.conversationType) {
         self.displayUserNameInCell = NO;
     }
+    
+    // + 扩展区域
+    if (ConversationType_PRIVATE == self.conversationType || ConversationType_DISCUSSION == self.conversationType || ConversationType_GROUP == self.conversationType) {
+        [self.chatSessionInputBarControl.pluginBoardView insertItemWithImage:[UIImage imageNamed:@"conversation_plugin_tipText"] title:@"提示消息" tag:101];
+        [self.chatSessionInputBarControl.pluginBoardView insertItemWithImage:[UIImage imageNamed:@"conversation_plugin_product"] title:@"商品" tag:102];
+    }
 }
 
 - (void)setView {
@@ -56,11 +62,8 @@
     [btnRight addTarget:self action:@selector(headerRightButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnRight];
-    
-    // + 扩展区域
-    [self.chatSessionInputBarControl.pluginBoardView insertItemWithImage:[UIImage imageNamed:@"conversation_plugin_tipText"] title:@"提示消息" tag:101];
-    [self.chatSessionInputBarControl.pluginBoardView insertItemWithImage:[UIImage imageNamed:@"conversation_plugin_product"] title:@"商品" tag:102];
 }
+
 - (void)loadData {
     
 }

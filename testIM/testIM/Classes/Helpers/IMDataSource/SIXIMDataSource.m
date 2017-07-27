@@ -8,6 +8,10 @@
 
 #import "SIXIMDataSource.h"
 
+static NSString *const kDicGroupmemberKey = @"kDicGroupmemberKey";
+static NSString *const kDicUserKey = @"kDicUserKey";
+
+
 @interface SIXIMDataSource ()
 /** key：群组 id， value：群组 id 列表 */
 @property (strong, nonatomic) NSMutableDictionary<NSString *, NSMutableArray<NSString *> *> *dicGroupMember;
@@ -33,8 +37,16 @@
 {
     self = [super init];
     if (self) {
-        self.dicGroupMember = [[NSMutableDictionary alloc] init];
-        self.dicUser = [[NSMutableDictionary alloc] init];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        self.dicGroupMember = [defaults objectForKey:kDicGroupmemberKey];
+        self.dicUser = [defaults objectForKey:kDicUserKey];
+        
+        if (nil == self.dicGroupMember) {
+            self.dicGroupMember = [[NSMutableDictionary alloc] init];
+        }
+        if (nil == self.dicUser) {
+            self.dicUser = [[NSMutableDictionary alloc] init];
+        }
     }
     return self;
 }
@@ -67,10 +79,13 @@
         RCUserInfo *u = [[RCUserInfo alloc] initWithUserId:ID name:name portrait:portrait];
         
         self.dicUser[userId] = u;
+        
         completion(u);
     } else {
         [SIXDataSourceTool getUserInfoByUserID:userId completion:^(RCUserInfo *user) {
             self.dicUser[userId] = user;
+            
+            [self persistenceData];
             completion(user);
         }];
     }
@@ -88,8 +103,18 @@
  @discussion 如果您使用了群名片功能，SDK需要通过您实现的群名片信息提供者，获取用户在群组中的名片信息并显示。
  */
 - (void)getUserInfoWithUserId:(NSString *)userId inGroup:(NSString *)groupId completion:(void (^)(RCUserInfo *userInfo))completion {
-    RCUserInfo *info = [[RCUserInfo alloc] initWithUserId:userId name:@"userName" portrait:@""];
-    completion(info);
+    //在这里查询该group内的群名片信息，如果能查到，调用completion返回。如果查询不到也一定要调用completion(nil)
+    if ([groupId isEqualToString:@"22"] && [userId isEqualToString:@"30806"]) {
+        completion([[RCUserInfo alloc] initWithUserId:@"30806"
+                                                 name:@"我在22群中的名片"
+                                             portrait:nil]);
+    } else {
+        RCUserInfo *userInfo = [[RCUserInfo alloc] initWithUserId:userId name:@"userName" portrait:@""];
+        if (self.dicUser) {
+            userInfo = [self.dicUser objectForKey:userId];
+        }
+        completion(userInfo);
+    }
 }
 
 
@@ -108,6 +133,8 @@
         [SIXDataSourceTool getGroupMembersWithGroupId:groupId Block:^(NSMutableArray<NSString *> *arr) {
             arrId = arr;
             self.dicGroupMember[groupId] = arr;
+            
+            [self persistenceData];
             resultBlock(arr);
         }];
     } else {
@@ -138,6 +165,13 @@
 }
 
 
+#pragma -mark 
+#pragma -mark private
+- (void)persistenceData {
+//    [[NSUserDefaults standardUserDefaults] setObject:self.dicUser forKey:kDicUserKey];
+//    [[NSUserDefaults standardUserDefaults] setObject:self.dicGroupMember forKey:kDicGroupmemberKey];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 @end
 

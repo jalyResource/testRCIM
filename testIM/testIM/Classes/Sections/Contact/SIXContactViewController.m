@@ -78,6 +78,8 @@
 #pragma -mark 
 #pragma -mark UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     SIXContact *model = [self.vcModel contactAtIndexPath:indexPath];
     
     SIXConversationViewController *conversationVC = [[SIXConversationViewController alloc]init];
@@ -102,7 +104,7 @@
 - (UITableView *)tableView {
     if (!_tableView) {
         CGRect frame = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
-        _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
         [_tableView registerClass:[SIXContactCell class] forCellReuseIdentifier:[SIXContactCell six_reuseIdentifier]];
         _tableView.delegate = self;
         _tableView.dataSource = self;
