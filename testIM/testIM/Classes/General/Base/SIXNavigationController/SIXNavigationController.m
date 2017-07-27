@@ -15,7 +15,17 @@
 @implementation SIXNavigationController
 
 + (void)initialize {
+    //统一导航条样式
+    UIFont *font = [UIFont systemFontOfSize:18.f];
+    NSDictionary *textAttributes = @{
+                                     NSFontAttributeName : font,
+                                     NSForegroundColorAttributeName : TEXT_COLOR_33
+                                     };
+    // Display attributes for the bar’s title text.
+    [[UINavigationBar appearance] setTitleTextAttributes:textAttributes];
     
+    [[UINavigationBar appearance] setTintColor:TEXT_COLOR_33];
+//    [[UINavigationBar appearance] setBarTintColor:TEXT_COLOR_33];
 }
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
