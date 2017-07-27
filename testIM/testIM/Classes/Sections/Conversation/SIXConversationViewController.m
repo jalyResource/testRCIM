@@ -12,7 +12,9 @@
 #import "SIXTipMessageCell.h"
 #import "SIXProductMessageCell.h"
 
-@interface SIXConversationViewController ()
+@interface SIXConversationViewController ()<
+    SIXTipMessageCellDelegate, SIXProductMessageCellDelegate
+>
 
 @property (strong, nonatomic) SIXConversationModel *vcModel;
 
@@ -40,6 +42,10 @@
     // 注册 自定义 cell
     [self registerClass:[SIXTipMessageCell class] forMessageClass:[SIXTipMessageContent class]];
     [self registerClass:[SIXProductMessageCell class] forMessageClass:[SIXProductMessageContent class]];
+    
+    if (ConversationType_PRIVATE == self.conversationType || ConversationType_CUSTOMERSERVICE == self.conversationType) {
+        self.displayUserNameInCell = NO;
+    }
 }
 
 - (void)setView {
@@ -62,7 +68,7 @@
 #pragma -mark 
 #pragma -mark event response
 - (void)headerRightButtonClicked {
-    SIXTipMessageContent *msgContent = [SIXTipMessageContent tipMessageContentWithTipText:@"this is test Text"];
+//    SIXTipMessageContent *msgContent = [SIXTipMessageContent tipMessageContentWithTipText:@"this is test Text"];
     
 //    [[RCIM sharedRCIM] sendMessage:self.model.conversationType targetId:self.model.targetId content:msgContent pushContent:msgContent.tipText pushData:msgContent.tipText success:^(long messageId) {
 //        DLog(@"\n\n\n   ---- send success");
@@ -91,12 +97,12 @@
 
     
     if ([cell isKindOfClass:[SIXTipMessageCell class]]) {        
-//        SIXTipMessageCell *tipCell = (SIXTipMessageCell *)cell;
-//        tipCell.messageContent = msgContent;
+        SIXTipMessageCell *tipCell = (SIXTipMessageCell *)cell;
+        tipCell.tipDelegate = self;
         [cell setModel:cellModel];
     } else if ([cell isKindOfClass:[SIXProductMessageCell class]]) {        
-//        SIXProductMessageCell *productCell = (SIXProductMessageCell *)cell;
-//        productCell.messageContent = msgContent;
+        SIXProductMessageCell *productCell = (SIXProductMessageCell *)cell;
+        productCell.productDelegate = self;
         [cell setModel:cellModel];
     }
 }
@@ -113,6 +119,20 @@
     } else {
         [self.vcModel pluginBoardView:pluginBoardView clickedItemWithTag:tag];
     }
+}
+
+
+#pragma -mark 
+#pragma -mark SIXTipMessageCellDelegate
+- (void)tipMessageCell:(SIXTipMessageCell *)tipMessageCell didTapTipText:(NSString *)text {
+    [self.vcModel alertMessage:text fromVC:self];
+}
+
+#pragma -mark 
+#pragma -mark SIXProductMessageCellDelegate
+- (void)productMessageCell:(SIXProductMessageCell *)productMessageCell didTapProductModel:(RCMessageModel *)messageModel {
+    SIXProductMessageContent *productModel = (SIXProductMessageContent *)messageModel.content;
+    [super didTapUrlInMessageCell:productModel.url model:messageModel];
 }
 
 

@@ -15,6 +15,8 @@ static CGFloat const kTipHorizontalMargin = 15.f;
 
 @property (strong, nonatomic) UILabel *lblTip;
 
+@property (strong, nonatomic) UITapGestureRecognizer *tapGesture;
+
 @end
 
 @implementation SIXTipMessageCell
@@ -24,6 +26,7 @@ static CGFloat const kTipHorizontalMargin = 15.f;
     self = [super initWithFrame:frame];
     if (self) {
         [self.baseContentView addSubview:self.lblTip];
+        [self.contentView addGestureRecognizer:self.tapGesture];
     }
     return self;
 }
@@ -57,16 +60,6 @@ static CGFloat const kTipHorizontalMargin = 15.f;
 
 /*!
  自定义消息 Cell 的 Size
- 
- @param model               要显示的消息model
- @param collectionViewWidth cell所在的collectionView的宽度
- @param extraHeight         cell内容区域之外的高度
- 
- @return 自定义消息Cell的Size
- 
- @discussion 当应用自定义消息时，必须实现该方法来返回cell的Size。
- 其中，extraHeight是Cell根据界面上下文，需要额外显示的高度（比如时间、用户名的高度等）。
- 一般而言，Cell的高度应该是内容显示的高度再加上extraHeight的高度。
  */
 + (CGSize)sizeForMessageModel:(RCMessageModel *)model
       withCollectionViewWidth:(CGFloat)collectionViewWidth
@@ -78,9 +71,27 @@ static CGFloat const kTipHorizontalMargin = 15.f;
     
     return CGSizeMake(collectionViewWidth, extraHeight + textH);
 }
+#pragma -mark 
+#pragma -mark event response
+- (void)tapGestureDidClicked:(UITapGestureRecognizer *)gesture {
+    CGPoint point = [gesture locationInView:self.contentView];
+    
+    if (CGRectContainsPoint(self.lblTip.frame, point)) {
+        if ([self.tipDelegate respondsToSelector:@selector(tipMessageCell:didTapTipText:)]) {
+            [self.tipDelegate tipMessageCell:self didTapTipText:self.lblTip.text];
+        }
+    }
+}
 
 #pragma -mark 
 #pragma -mark getter
+- (UITapGestureRecognizer *)tapGesture {
+    if (!_tapGesture) {
+        _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureDidClicked:)];
+    }
+    return _tapGesture;
+}
+
 - (UILabel *)lblTip {
     if (!_lblTip) {
         _lblTip = [[UILabel alloc] init];
@@ -88,8 +99,33 @@ static CGFloat const kTipHorizontalMargin = 15.f;
         _lblTip.textAlignment = NSTextAlignmentCenter;
         _lblTip.font = [UIFont systemFontOfSize:13];
         _lblTip.numberOfLines = 0;
+        _lblTip.userInteractionEnabled = NO;
     }
     return _lblTip;
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

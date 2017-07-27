@@ -7,8 +7,17 @@
 //
 
 #import <RongIMKit/RongIMKit.h>
+@class SIXProductMessageCell;
+
+@protocol SIXProductMessageCellDelegate <NSObject>
+
+@optional
+- (void)productMessageCell:(SIXProductMessageCell *)productMessageCell didTapProductModel:(RCMessageModel *)messageModel ;
+
+@end
 
 @interface SIXProductMessageCell : RCMessageCell
 
+@property (weak, nonatomic) id<SIXProductMessageCellDelegate> productDelegate;
 
 @end

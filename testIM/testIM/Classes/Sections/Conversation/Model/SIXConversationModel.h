@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <RongCloudIM/RongIMKit/RCMessageModel.h>
 @class RCPluginBoardView;
 
 typedef NS_ENUM(NSUInteger, EnumSendMessageType) {
@@ -28,5 +29,9 @@ typedef NS_ENUM(NSUInteger, EnumSendMessageType) {
 #pragma -mark 
 #pragma -mark public
 -(void)pluginBoardView:(RCPluginBoardView*)pluginBoardView clickedItemWithTag:(NSInteger)tag ;
+
+- (void)didTapMessageCell:(RCMessageModel *)model ;
+
+- (void)alertMessage:(NSString *)message fromVC:(__kindof UIViewController *)vc ;
 
 @end

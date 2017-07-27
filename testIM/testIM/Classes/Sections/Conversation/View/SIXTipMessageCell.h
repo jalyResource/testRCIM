@@ -8,8 +8,17 @@
 
 #import <RongIMKit/RongIMKit.h>
 @class SIXTipMessageContent;
+@class SIXTipMessageCell;
+
+@protocol SIXTipMessageCellDelegate <NSObject>
+
+@optional
+- (void)tipMessageCell:(SIXTipMessageCell *)tipMessageCell didTapTipText:(NSString *)text ;
+
+@end
 
 @interface SIXTipMessageCell : RCMessageBaseCell
 
+@property (weak, nonatomic) id<SIXTipMessageCellDelegate> tipDelegate;
 
 @end

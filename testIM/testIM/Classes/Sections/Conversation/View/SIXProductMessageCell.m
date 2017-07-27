@@ -16,6 +16,8 @@ static CGFloat const kMsgContviewH = 80;
 
 @property (strong, nonatomic) UILabel *lblName;
 @property (strong, nonatomic) UILabel *lblPrice;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGesture;
+
 
 @end
 
@@ -31,6 +33,7 @@ static CGFloat const kMsgContviewH = 80;
 //        self.messageContentView.layer.cornerRadius = 5;
 //        self.messageContentView.layer.masksToBounds = YES;
         
+        [self.contentView addGestureRecognizer:self.tapGesture];
         
         [self.messageContentView addSubview:self.imgViewBackground];
         [self.messageContentView addSubview:self.imgViewIcon];
@@ -56,11 +59,15 @@ static CGFloat const kMsgContviewH = 80;
     // icon
     CGFloat margin = 10;
     CGFloat iconW = kMsgContviewH - margin * 2;
-    self.imgViewIcon.frame = CGRectMake(margin, margin, iconW, iconW);
+    CGFloat iconX = margin;
+    if (MessageDirection_RECEIVE == self.model.messageDirection) {
+        iconX += 6;
+    }
+    self.imgViewIcon.frame = CGRectMake(iconX, margin, iconW, iconW);
     
     
     // name
-    CGFloat nameX = margin * 2 + iconW;
+    CGFloat nameX = margin + CGRectGetMaxX(self.imgViewIcon.frame);
     CGFloat nameW = msgContentViewWidth  - nameX - margin;
     CGFloat nameH = ( kMsgContviewH - 2 * margin ) *0.7;
     self.lblName.frame = CGRectMake(nameX, margin, nameW, nameH);
@@ -92,6 +99,19 @@ static CGFloat const kMsgContviewH = 80;
 }
 
 #pragma -mark 
+#pragma -mark event response
+- (void)tapGestureDidClicked:(UITapGestureRecognizer *)gesture {
+    CGPoint point = [gesture locationInView:self.contentView];
+//    NSLog(@"%@", NSStringFromCGPoint(point));
+    
+    if (CGRectContainsPoint(self.messageContentView.frame, point)) {
+        if ([self.productDelegate respondsToSelector:@selector(productMessageCell:didTapProductModel:)]) {
+            [self.productDelegate productMessageCell:self didTapProductModel:self.model];
+        }
+    } 
+}
+
+#pragma -mark 
 #pragma -mark getter and setter
 - (void)setModel:(RCMessageModel *)model {
     [super setModel:model];
@@ -119,6 +139,13 @@ static CGFloat const kMsgContviewH = 80;
         
         [self setNeedsLayout];
     }
+}
+
+- (UITapGestureRecognizer *)tapGesture {
+    if (!_tapGesture) {
+        _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureDidClicked:)];
+    }
+    return _tapGesture;
 }
 
 - (UILabel *)lblName {

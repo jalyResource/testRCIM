@@ -36,4 +36,39 @@
         }
     }
 }
+
+- (void)didTapMessageCell:(RCMessageModel *)model {
+    
+}
+
+- (void)alertMessage:(NSString *)message fromVC:(__kindof UIViewController *)vc {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"You tapped" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [vc presentViewController:alert animated:YES completion:nil];
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
