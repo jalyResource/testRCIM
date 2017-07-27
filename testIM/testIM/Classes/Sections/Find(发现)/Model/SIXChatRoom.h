@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface SIXChatRoom : NSObject
+
 @property (copy, nonatomic) NSString *ID;
 
 @property (copy, nonatomic) NSString *name;

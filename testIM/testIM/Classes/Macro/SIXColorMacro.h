@@ -16,7 +16,10 @@
 #define TEXT_COLOR_33  [UIColor colorWithHex:0x333333]
 #define TEXT_COLOR_66  [UIColor colorWithHex:0x666666]
 #define TEXT_COLOR_99  [UIColor colorWithHex:0x999999]
+
 #define LINE_COLOR_CC  [UIColor colorWithHex:0xCCCCCC]
+#define LINE_COLOR_EE  [UIColor colorWithHex:0xeeeeee]
+
 #define TEXT_COLOR_RED [UIColor colorWithHex:0xdd0000]
 
 

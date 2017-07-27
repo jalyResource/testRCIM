@@ -24,6 +24,8 @@
 		0A40257C1F20BD0700D7D230 /* SIXBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4025791F20BD0700D7D230 /* SIXBaseViewController.m */; };
 		0A40257D1F20BD0700D7D230 /* SIXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40257B1F20BD0700D7D230 /* SIXViewController.m */; };
 		0A4025801F20BF1600D7D230 /* AppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40257F1F20BF1600D7D230 /* AppContext.m */; };
+		0A47D53A1F297F6C004626CE /* SIXChatRoomListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D5391F297F6C004626CE /* SIXChatRoomListCell.m */; };
+		0A47D53D1F2989D4004626CE /* NSArray+SIXCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D53C1F2989D4004626CE /* NSArray+SIXCheck.m */; };
 		0A4EA1AF1F2847330003DAD4 /* SIXMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1AE1F2847330003DAD4 /* SIXMineViewController.m */; };
 		0A4EA1B21F284B7E0003DAD4 /* SIXGroupInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1B11F284B7E0003DAD4 /* SIXGroupInfo.m */; };
 		0A4EA1B81F287EB50003DAD4 /* SIXMineVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1B71F287EB50003DAD4 /* SIXMineVCModel.m */; };
@@ -34,6 +36,7 @@
 		0A4EA1D21F28A5F80003DAD4 /* SIXLoginVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1D11F28A5F80003DAD4 /* SIXLoginVCModel.m */; };
 		0A4EA1D51F28A7A30003DAD4 /* SIXFindVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1D41F28A7A30003DAD4 /* SIXFindVCModel.m */; };
 		0A4EA1D81F28A7E80003DAD4 /* SIXChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1D71F28A7E80003DAD4 /* SIXChatRoom.m */; };
+		0A4EA1DB1F28A9D30003DAD4 /* SIXFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4EA1DA1F28A9D30003DAD4 /* SIXFindViewController.m */; };
 		0A50F4841F26E2D200FD8C04 /* SIXContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F4831F26E2D200FD8C04 /* SIXContactViewController.m */; };
 		0A50F48A1F26E31800FD8C04 /* SIXContactVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F4891F26E31800FD8C04 /* SIXContactVCModel.m */; };
 		0A50F48E1F26E9C100FD8C04 /* SIXContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50F48D1F26E9C100FD8C04 /* SIXContact.m */; };
@@ -136,6 +139,10 @@
 		0A40257B1F20BD0700D7D230 /* SIXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXViewController.m; sourceTree = "<group>"; };
 		0A40257E1F20BF1600D7D230 /* AppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppContext.h; sourceTree = "<group>"; };
 		0A40257F1F20BF1600D7D230 /* AppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppContext.m; sourceTree = "<group>"; };
+		0A47D5381F297F6C004626CE /* SIXChatRoomListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXChatRoomListCell.h; sourceTree = "<group>"; };
+		0A47D5391F297F6C004626CE /* SIXChatRoomListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXChatRoomListCell.m; sourceTree = "<group>"; };
+		0A47D53B1F2989D4004626CE /* NSArray+SIXCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SIXCheck.h"; sourceTree = "<group>"; };
+		0A47D53C1F2989D4004626CE /* NSArray+SIXCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SIXCheck.m"; sourceTree = "<group>"; };
 		0A4EA1AD1F2847330003DAD4 /* SIXMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXMineViewController.h; sourceTree = "<group>"; };
 		0A4EA1AE1F2847330003DAD4 /* SIXMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXMineViewController.m; sourceTree = "<group>"; };
 		0A4EA1B01F284B7E0003DAD4 /* SIXGroupInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXGroupInfo.h; sourceTree = "<group>"; };
@@ -155,6 +162,8 @@
 		0A4EA1D41F28A7A30003DAD4 /* SIXFindVCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXFindVCModel.m; sourceTree = "<group>"; };
 		0A4EA1D61F28A7E80003DAD4 /* SIXChatRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXChatRoom.h; sourceTree = "<group>"; };
 		0A4EA1D71F28A7E80003DAD4 /* SIXChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXChatRoom.m; sourceTree = "<group>"; };
+		0A4EA1D91F28A9D30003DAD4 /* SIXFindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXFindViewController.h; sourceTree = "<group>"; };
+		0A4EA1DA1F28A9D30003DAD4 /* SIXFindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXFindViewController.m; sourceTree = "<group>"; };
 		0A50F4821F26E2D200FD8C04 /* SIXContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXContactViewController.h; sourceTree = "<group>"; };
 		0A50F4831F26E2D200FD8C04 /* SIXContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXContactViewController.m; sourceTree = "<group>"; };
 		0A50F4881F26E31800FD8C04 /* SIXContactVCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXContactVCModel.h; sourceTree = "<group>"; };
@@ -484,6 +493,8 @@
 				0A4025691F20BA0800D7D230 /* UIView+Addition.m */,
 				0A5587F31F21A7E200673AFE /* NSDictionary+SIXParse.h */,
 				0A5587F41F21A7E200673AFE /* NSDictionary+SIXParse.m */,
+				0A47D53B1F2989D4004626CE /* NSArray+SIXCheck.h */,
+				0A47D53C1F2989D4004626CE /* NSArray+SIXCheck.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -574,6 +585,8 @@
 		0A4EA1C81F289EB10003DAD4 /* Find(发现) */ = {
 			isa = PBXGroup;
 			children = (
+				0A4EA1D91F28A9D30003DAD4 /* SIXFindViewController.h */,
+				0A4EA1DA1F28A9D30003DAD4 /* SIXFindViewController.m */,
 				0A4EA1C91F289EE00003DAD4 /* Model */,
 				0A4EA1CB1F289EE00003DAD4 /* View */,
 				0A4EA1CA1F289EE00003DAD4 /* Others */,
@@ -602,6 +615,8 @@
 		0A4EA1CB1F289EE00003DAD4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0A47D5381F297F6C004626CE /* SIXChatRoomListCell.h */,
+				0A47D5391F297F6C004626CE /* SIXChatRoomListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1174,11 +1189,13 @@
 				0A5588081F21D93700673AFE /* pinyin.c in Sources */,
 				0A5587E21F21A1D900673AFE /* AFURLSessionManager.m in Sources */,
 				0A5587E71F21A1D900673AFE /* UIImageView+AFNetworking.m in Sources */,
+				0A47D53A1F297F6C004626CE /* SIXChatRoomListCell.m in Sources */,
 				0A50F4991F26F5B700FD8C04 /* SIXTableViewCell.m in Sources */,
 				0A5587E91F21A1D900673AFE /* UIRefreshControl+AFNetworking.m in Sources */,
 				0A5587DF1F21A1D900673AFE /* AFURLConnectionOperation.m in Sources */,
 				0A5588011F21B74200673AFE /* SIXConversationListViewController.m in Sources */,
 				0A40257C1F20BD0700D7D230 /* SIXBaseViewController.m in Sources */,
+				0A47D53D1F2989D4004626CE /* NSArray+SIXCheck.m in Sources */,
 				0A5587EA1F21A1D900673AFE /* UIWebView+AFNetworking.m in Sources */,
 				0A4EA1D51F28A7A30003DAD4 /* SIXFindVCModel.m in Sources */,
 				0A50F4951F26EA7400FD8C04 /* SIXUserInfo.m in Sources */,
@@ -1230,6 +1247,7 @@
 				0A5587E11F21A1D900673AFE /* AFURLResponseSerialization.m in Sources */,
 				0A5587B31F2193D700673AFE /* SIXLoginViewController.m in Sources */,
 				0ADF482C1F25AC1900C870F2 /* SIXIMDataSource.m in Sources */,
+				0A4EA1DB1F28A9D30003DAD4 /* SIXFindViewController.m in Sources */,
 				0A4EA1D81F28A7E80003DAD4 /* SIXChatRoom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

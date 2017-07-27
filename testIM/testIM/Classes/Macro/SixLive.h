@@ -50,6 +50,7 @@
 #import "NSString+Check.h"
 #import "NSString+Addition.h"
 #import "NSDictionary+SIXParse.h"
+#import "NSArray+SIXCheck.h"
 
 
 

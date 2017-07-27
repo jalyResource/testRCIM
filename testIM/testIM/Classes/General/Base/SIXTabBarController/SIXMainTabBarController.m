@@ -10,6 +10,7 @@
 #import "SIXConversationListViewController.h"
 #import "SIXContactViewController.h"
 #import "SIXMineViewController.h"
+#import "SIXFindViewController.h"
 
 @interface SIXMainTabBarController ()
 
@@ -39,6 +40,12 @@
     contactVC.tabBarItem.image = [UIImage imageNamed:@"tab_btn_contact_normal"];
     contactVC.tabBarItem.selectedImage = [UIImage imageNamed:@"tab_btn_contact_selected"];
     
+    // 发现
+    SIXFindViewController *findVC = [[SIXFindViewController alloc] init];
+    findVC.tabBarItem.title = @"发现";
+    findVC.tabBarItem.image = [UIImage imageNamed:@"tab_btn_find_normal"];
+    findVC.tabBarItem.selectedImage = [UIImage imageNamed:@"tab_btn_find_selected"];
+    
     // 我的
     SIXMineViewController *mineVC = [[SIXMineViewController alloc] init];
     mineVC.tabBarItem.title = @"我的";
@@ -47,7 +54,7 @@
     
     
     
-    NSArray<UIViewController *> *arrVC = @[conversationListVC, contactVC, mineVC];
+    NSArray<UIViewController *> *arrVC = @[conversationListVC, contactVC, findVC, mineVC];
     self.viewControllers = arrVC;
 }
 
