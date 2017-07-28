@@ -82,7 +82,7 @@
             break;
         }
         case EnumMineCellTypeFeedback: {
-            [((SIXMineNormalCell *)cell) setText:@"意见反馈"];
+            [((SIXMineNormalCell *)cell) setText:@"客服"];
             break;
         }
         case EnumMineCellTypeLogout: {
