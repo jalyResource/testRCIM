@@ -88,6 +88,7 @@
     if (!_tableView) {
         CGRect frame = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
         _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
+        _tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0);
         [_tableView registerClass:[SIXChatRoomListCell class] forCellReuseIdentifier:[SIXChatRoomListCell six_reuseIdentifier]];
         
         _tableView.rowHeight = 66;

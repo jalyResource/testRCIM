@@ -43,13 +43,12 @@
 
 - (void)setView {
     [self.view addSubview:self.tableView];
-    self.tableView.frame = [UIScreen mainScreen].bounds;
     
-    self.tableView.tableHeaderView = ({
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SIX_SCREEN_WIDTH, 10)];
-        v.backgroundColor = [UIColor clearColor];
-        v;
-    });
+//    self.tableView.tableHeaderView = ({
+//        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SIX_SCREEN_WIDTH, 10)];
+//        v.backgroundColor = [UIColor redColor];
+//        v;
+//    });
 }
 
 - (void)loadData {
@@ -137,8 +136,9 @@
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        CGRect frame = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+        CGRect frame = CGRectMake(0, 64, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT - 64 - 44);
         _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
+
         [_tableView registerClass:[SIXMineInfoCell class] forCellReuseIdentifier:[SIXMineInfoCell six_reuseIdentifier]];
         [_tableView registerClass:[SIXMineNormalCell class] forCellReuseIdentifier:[SIXMineNormalCell six_reuseIdentifier]];
         
