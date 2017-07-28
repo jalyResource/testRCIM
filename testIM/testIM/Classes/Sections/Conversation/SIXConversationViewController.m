@@ -133,27 +133,25 @@
  @discussion SDK在此长按事件中，会默认展示菜单。
  您在重写此回调时，如果想保留SDK原有的功能，需要注意调用super。
  */
-- (void)didLongTouchMessageCell:(RCMessageModel *)model
-                         inView:(UIView *)view {
-    [super didLongTouchMessageCell:model inView:view];
-    NSLog(@"didLongTouchMessageCell");
-}
-
-/*!
- 获取长按Cell中的消息时的菜单
- 
- @param model 消息Cell的数据模型
- 
- @discussion SDK在此长按事件中，会展示此方法返回的菜单。
- 您在重写此回调时，如果想保留SDK原有的功能，需要注意调用super。
- */
-- (NSArray<UIMenuItem *> *)getLongTouchMessageCellMenuList:(RCMessageModel *)model{
-    NSArray *array = [super getLongTouchMessageCellMenuList:model];
-    
-    UIMenuItem *itemCopy = [[UIMenuItem alloc] initWithTitle:@"copy" action:@selector(copy:)];
-    UIMenuItem *itemCut = [[UIMenuItem alloc] initWithTitle:@"cut" action:@selector(cut:)];
-    return [array arrayByAddingObjectsFromArray:@[itemCut, itemCopy]];
-}
+//- (void)didLongTouchMessageCell:(RCMessageModel *)model
+//                         inView:(UIView *)view {
+//    
+//    [super didLongTouchMessageCell:model inView:view];
+//}
+//
+///*!
+// 获取长按Cell中的消息时的菜单
+// 
+// @param model 消息Cell的数据模型
+// 
+// @discussion SDK在此长按事件中，会展示此方法返回的菜单。
+// 您在重写此回调时，如果想保留SDK原有的功能，需要注意调用super。
+// */
+//- (NSArray<UIMenuItem *> *)getLongTouchMessageCellMenuList:(RCMessageModel *)model{
+//    NSArray *array = [super getLongTouchMessageCellMenuList:model];
+//    
+//    return array;
+//}
 
 
 #pragma -mark 

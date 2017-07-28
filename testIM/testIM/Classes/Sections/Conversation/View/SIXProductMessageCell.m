@@ -34,6 +34,13 @@ static CGFloat const kMsgContviewH = 80;
 //        self.messageContentView.layer.cornerRadius = 5;
 //        self.messageContentView.layer.masksToBounds = YES;
         
+//        SEL sel = NSSelectorFromString(@"_handleMenuGesture:");
+//        for (UIGestureRecognizer *ges in self.contentView.gestureRecognizers) {
+//            if ([ges isKindOfClass:[UILongPressGestureRecognizer class]]) {
+//                [ges removeTarget:self action:sel];
+//            }
+//        }
+        
         [self.contentView addGestureRecognizer:self.tapGesture];
         [self.contentView addGestureRecognizer:self.longPressGesture];
         
@@ -102,7 +109,9 @@ static CGFloat const kMsgContviewH = 80;
 
 #pragma -mark 
 #pragma -mark event response
-- (void)tapGestureDidClicked:(UITapGestureRecognizer *)gesture {
+- (void)six_tapGestureDidClicked:(UITapGestureRecognizer *)gesture {
+//    NSLog(@"state: %ld", gesture.state);
+    
     CGPoint point = [gesture locationInView:self.contentView];
 //    NSLog(@"%@", NSStringFromCGPoint(point));
     
@@ -113,11 +122,19 @@ static CGFloat const kMsgContviewH = 80;
     } 
 }
 
-- (void)longPressGestureDidPressed:(UILongPressGestureRecognizer *)gesture {
+- (void)six_longPressGestureDidPressed:(UILongPressGestureRecognizer *)gesture {
+//        NSLog(@"state: %ld", gesture.state);
+    if (UIGestureRecognizerStateEnded == gesture.state) {
+        return;
+    }
     UIMenuController *menuController = [UIMenuController sharedMenuController];
+    // 明日任务， 自定义 复制、删除
+    UIMenuItem *itemCopy = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(sixCopy:)];
+    UIMenuItem *itemDelete = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(sixDelete:)];
+    menuController.menuItems = @[itemCopy, itemDelete];
     
     CGRect rect = self.messageContentView.bounds;
-    rect.origin.y = 10;
+    rect.origin.y += 10;
     rect.size.height -= 20;
     [menuController setTargetRect:rect inView:self.messageContentView];
     [menuController setMenuVisible:YES animated:YES];
@@ -125,12 +142,12 @@ static CGFloat const kMsgContviewH = 80;
 }
 
 #pragma -mark 
-#pragma -mark private : UIMenuItem
+#pragma -mark override
 - (BOOL)canBecomeFirstResponder {
     return YES;
 }
 - (BOOL)canPerformAction:(SEL)action withSender:(nullable id)sender {
-    NSArray<NSString *> *arrSel = @[@"copy:", @"delete:"];
+    NSArray<NSString *> *arrSel = @[@"sixCopy:", @"sixDelete:"];
     
     NSString *strAction = NSStringFromSelector(action);
     if ([arrSel containsObject:strAction]) {
@@ -139,13 +156,13 @@ static CGFloat const kMsgContviewH = 80;
     return NO;
 }
 
-- (void)copy:(nullable id)sender {
+- (void)sixCopy:(nullable id)sender {
     UIPasteboard *pastB = [UIPasteboard generalPasteboard];
     SIXProductMessageContent *productMessage = (SIXProductMessageContent *)self.model.content;
     [pastB setString:productMessage.url];
 }
 
-- (void)delete:(nullable id)sender {
+- (void)sixDelete:(nullable id)sender {
     if ([self.productDelegate respondsToSelector:@selector(productMessageCell:deleteMessage:)]) {
         [self.productDelegate productMessageCell:self deleteMessage:self.model]; 
     }
@@ -183,13 +200,14 @@ static CGFloat const kMsgContviewH = 80;
 
 - (UITapGestureRecognizer *)tapGesture {
     if (!_tapGesture) {
-        _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureDidClicked:)];
+        _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(six_tapGestureDidClicked:)];
     }
     return _tapGesture;
 }
 - (UILongPressGestureRecognizer *)longPressGesture {
     if (!_longPressGesture) {
-        _longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureDidPressed:)];
+        _longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(six_longPressGestureDidPressed:)];
+        _longPressGesture.allowableMovement = 0;
     }
     return _longPressGesture;
 }
