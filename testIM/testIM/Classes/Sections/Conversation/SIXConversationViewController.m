@@ -43,7 +43,7 @@
     [self registerClass:[SIXTipMessageCell class] forMessageClass:[SIXTipMessageContent class]];
     [self registerClass:[SIXProductMessageCell class] forMessageClass:[SIXProductMessageContent class]];
     
-    if (ConversationType_PRIVATE == self.conversationType || ConversationType_CUSTOMERSERVICE == self.conversationType) {
+    if (ConversationType_GROUP == self.conversationType || ConversationType_PRIVATE == self.conversationType || ConversationType_CUSTOMERSERVICE == self.conversationType) {
         self.displayUserNameInCell = NO;
     }
     
