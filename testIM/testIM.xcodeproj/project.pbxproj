@@ -72,6 +72,7 @@
 		0A5588011F21B74200673AFE /* SIXConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5588001F21B74200673AFE /* SIXConversationListViewController.m */; };
 		0A5588051F21D8C500673AFE /* RCDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5588041F21D8C500673AFE /* RCDUtilities.m */; };
 		0A5588081F21D93700673AFE /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A5588061F21D93700673AFE /* pinyin.c */; };
+		0A662A461F2B3D24008E0C1D /* SIXUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A662A451F2B3D24008E0C1D /* SIXUserInfoViewController.m */; };
 		0AD65B2C1F27501C00C2BE48 /* SIXProductMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD65B2B1F27501C00C2BE48 /* SIXProductMessageCell.m */; };
 		0ADF48281F258DE700C870F2 /* SIXConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF48271F258DE700C870F2 /* SIXConversationViewController.m */; };
 		0ADF482C1F25AC1900C870F2 /* SIXIMDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF482B1F25AC1900C870F2 /* SIXIMDataSource.m */; };
@@ -238,6 +239,8 @@
 		0A5588041F21D8C500673AFE /* RCDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDUtilities.m; sourceTree = "<group>"; };
 		0A5588061F21D93700673AFE /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
 		0A5588071F21D93700673AFE /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		0A662A441F2B3D24008E0C1D /* SIXUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXUserInfoViewController.h; sourceTree = "<group>"; };
+		0A662A451F2B3D24008E0C1D /* SIXUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXUserInfoViewController.m; sourceTree = "<group>"; };
 		0AD65B2A1F27501C00C2BE48 /* SIXProductMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXProductMessageCell.h; sourceTree = "<group>"; };
 		0AD65B2B1F27501C00C2BE48 /* SIXProductMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXProductMessageCell.m; sourceTree = "<group>"; };
 		0ADF48261F258DE700C870F2 /* SIXConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXConversationViewController.h; sourceTree = "<group>"; };
@@ -552,6 +555,7 @@
 		0A4EA1C11F2893B50003DAD4 /* SubSections */ = {
 			isa = PBXGroup;
 			children = (
+				0A662A431F2B3D19008E0C1D /* UserInfo */,
 				0A4EA1C21F2893B50003DAD4 /* CustomerService */,
 			);
 			path = SubSections;
@@ -867,6 +871,15 @@
 				0A5588071F21D93700673AFE /* pinyin.h */,
 			);
 			path = RCUtils;
+			sourceTree = "<group>";
+		};
+		0A662A431F2B3D19008E0C1D /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				0A662A441F2B3D24008E0C1D /* SIXUserInfoViewController.h */,
+				0A662A451F2B3D24008E0C1D /* SIXUserInfoViewController.m */,
+			);
+			path = UserInfo;
 			sourceTree = "<group>";
 		};
 		0ADF48291F25AC0B00C870F2 /* IMDataSource */ = {
@@ -1230,6 +1243,7 @@
 				0A5587F51F21A7E200673AFE /* NSDictionary+SIXParse.m in Sources */,
 				0ADF48281F258DE700C870F2 /* SIXConversationViewController.m in Sources */,
 				0A5587E51F21A1D900673AFE /* UIAlertView+AFNetworking.m in Sources */,
+				0A662A461F2B3D24008E0C1D /* SIXUserInfoViewController.m in Sources */,
 				0A40254A1F20B70C00D7D230 /* SIXNavigationBar.m in Sources */,
 				0A4025801F20BF1600D7D230 /* AppContext.m in Sources */,
 				0A4025461F20B70C00D7D230 /* SIXNavigationController.m in Sources */,

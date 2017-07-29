@@ -9,6 +9,7 @@
 #import "SIXMineVCModel.h"
 #import "SIXCustomerServiceViewController.h"
 #import "AppDelegate.h"
+#import "SIXUserInfoViewController.h"
 
 // 融云客服 id
 #define RC_CUSTOMER_SERVICE_ID @"KEFU146001495753714"
@@ -64,7 +65,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath fromVC:(__kindof SIXViewController *)viewController {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    if (0 == indexPath.section) {
+        SIXUserInfoViewController *userInfoVC = [[SIXUserInfoViewController alloc] init];
+        [viewController.navigationController pushViewController:userInfoVC animated:YES];
+    } else
     if (1 == indexPath.section) {
         switch (indexPath.row) {
             case 0: {

@@ -38,7 +38,6 @@
 }
 
 - (void)setUp {
-    self.view.backgroundColor = [UIColor orangeColor];
 }
 
 - (void)setView {
@@ -49,6 +48,8 @@
 //        v.backgroundColor = [UIColor redColor];
 //        v;
 //    });
+    
+    self.tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"right" style:UIBarButtonItemStylePlain target:self action:@selector(loadData)];
 }
 
 - (void)loadData {
@@ -136,7 +137,7 @@
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        CGRect frame = CGRectMake(0, 64, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT - 64 - 44);
+        CGRect frame = CGRectMake(0, 64, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT - 44);
         _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
 
         [_tableView registerClass:[SIXMineInfoCell class] forCellReuseIdentifier:[SIXMineInfoCell six_reuseIdentifier]];

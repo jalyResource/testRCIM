@@ -26,6 +26,7 @@
     
     [[UINavigationBar appearance] setTintColor:TEXT_COLOR_33];
 //    [[UINavigationBar appearance] setBarTintColor:TEXT_COLOR_33];
+    [UINavigationBar appearance].translucent = NO;
 }
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
