@@ -38,6 +38,12 @@
     [super viewWillAppear:animated];
 //    self.defaultInputType = RCChatSessionInputBarInputVoice;
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (ConversationType_CHATROOM == self.conversationType) {
+        [self scrollToBottomAnimated:YES];
+    }
+}
 
 - (void)dealloc {
     [self.conversationMessageCollectionView removeObserver:self forKeyPath:@"frame"];
