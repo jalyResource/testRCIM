@@ -17,6 +17,8 @@
 >
 
 @property (strong, nonatomic) SIXConversationModel *vcModel;
+/** UI */
+@property (strong, nonatomic) UIButton *btnMedal;
 
 @end
 
@@ -37,6 +39,18 @@
 //    self.defaultInputType = RCChatSessionInputBarInputVoice;
 }
 
+- (void)dealloc {
+    [self.conversationMessageCollectionView removeObserver:self forKeyPath:@"frame"];
+}
+
+#pragma -mark 
+#pragma -mark private
+- (void)keyboardWillChangeFrame:(NSNotification *)notification {
+//    NSLog(@"%@", notification);
+//    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
+}
+
+
 - (void)setUp {
 //    [self.chatSessionInputBarControl setInputBarType:RCChatSessionInputBarControlDefaultType style:RC_CHAT_INPUT_BAR_STYLE_SWITCH_CONTAINER_EXTENTION];
     // 注册 自定义 cell
@@ -52,9 +66,17 @@
         [self.chatSessionInputBarControl.pluginBoardView insertItemWithImage:[UIImage imageNamed:@"conversation_plugin_tipText"] title:@"提示消息" tag:101];
         [self.chatSessionInputBarControl.pluginBoardView insertItemWithImage:[UIImage imageNamed:@"conversation_plugin_product"] title:@"商品" tag:102];
     }
+    
+    // 监听键盘弹出事件
+    [self.conversationMessageCollectionView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)setView {
+    // 最后一条消息下方留一行
+    UIEdgeInsets insets = self.conversationMessageCollectionView.contentInset;
+    insets.bottom += 85;
+    self.conversationMessageCollectionView.contentInset = insets;
+    
     UIButton *btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
     btnRight.frame = CGRectMake(0, 0, 44, 44);
     [btnRight setTitle:@"tipMsg" forState:UIControlStateNormal];
@@ -62,6 +84,19 @@
     [btnRight addTarget:self action:@selector(headerRightButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnRight];
+    
+    // 添加 “奖单” 按钮
+    if (ConversationType_PRIVATE == self.conversationType) {
+        [self.conversationMessageCollectionView addSubview:self.btnMedal];
+        CGRect frame = self.conversationMessageCollectionView.bounds;
+        frame.origin.x = frame.size.width - 15 - 50;
+        frame.origin.y = frame.size.height - 10 - 50;
+        frame.size = CGSizeMake(50, 50);
+        self.btnMedal.frame = frame;
+        frame = [self.conversationMessageCollectionView convertRect:frame toView:self.view];
+        self.btnMedal.frame = frame;
+        [self.view addSubview:self.btnMedal];
+    }
 }
 
 - (void)loadData {
@@ -71,14 +106,12 @@
 #pragma -mark 
 #pragma -mark event response
 - (void)headerRightButtonClicked {
-//    SIXTipMessageContent *msgContent = [SIXTipMessageContent tipMessageContentWithTipText:@"this is test Text"];
-    
-//    [[RCIM sharedRCIM] sendMessage:self.model.conversationType targetId:self.model.targetId content:msgContent pushContent:msgContent.tipText pushData:msgContent.tipText success:^(long messageId) {
-//        DLog(@"\n\n\n   ---- send success");
-//    } error:^(RCErrorCode nErrorCode, long messageId) {
-//        DLog(@"\n\n\n   ---- send faile");
-//    }];
 }
+
+- (void)btnMedalClicked:(UIButton *)sender {
+    NSLog(@"%s", __func__);
+}
+
 
 #pragma -mark 
 #pragma -mark override
@@ -124,34 +157,20 @@
     }
 }
 
-/*!
- 长按Cell中的消息内容的回调
- 
- @param model 消息Cell的数据模型
- @param view  长按区域的View
- 
- @discussion SDK在此长按事件中，会默认展示菜单。
- 您在重写此回调时，如果想保留SDK原有的功能，需要注意调用super。
- */
-//- (void)didLongTouchMessageCell:(RCMessageModel *)model
-//                         inView:(UIView *)view {
-//    
-//    [super didLongTouchMessageCell:model inView:view];
-//}
-//
-///*!
-// 获取长按Cell中的消息时的菜单
-// 
-// @param model 消息Cell的数据模型
-// 
-// @discussion SDK在此长按事件中，会展示此方法返回的菜单。
-// 您在重写此回调时，如果想保留SDK原有的功能，需要注意调用super。
-// */
-//- (NSArray<UIMenuItem *> *)getLongTouchMessageCellMenuList:(RCMessageModel *)model{
-//    NSArray *array = [super getLongTouchMessageCellMenuList:model];
-//    
-//    return array;
-//}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+//    NSLog(@"path: %@ \n  %@", keyPath, change);
+    if ([keyPath isEqualToString:@"frame"]) {
+        if (ConversationType_PRIVATE == self.conversationType) {
+            static CGFloat width = 55;
+            CGRect frame = [[change objectForKey:@"new"] CGRectValue];
+            frame.origin.x = frame.size.width - 10 - width;
+            frame.origin.y = frame.size.height - 10;
+            frame.size = CGSizeMake(width, width);
+            self.btnMedal.frame = frame;
+        }
+    }
+}
 
 
 #pragma -mark 
@@ -179,6 +198,15 @@
         _vcModel.targetId = self.conversationModel.targetId;
     }
     return _vcModel;
+}
+
+- (UIButton *)btnMedal {
+    if (!_btnMedal) {
+        _btnMedal = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_btnMedal setImage:[UIImage imageNamed:@"chat_icon_jiangdan"] forState:UIControlStateNormal];
+        [_btnMedal addTarget:self action:@selector(btnMedalClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnMedal;
 }
 
 @end
