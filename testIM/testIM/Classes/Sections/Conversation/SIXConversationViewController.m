@@ -51,14 +51,7 @@
 
 #pragma -mark 
 #pragma -mark private
-- (void)keyboardWillChangeFrame:(NSNotification *)notification {
-//    NSLog(@"%@", notification);
-//    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
-}
-
-
 - (void)setUp {
-//    [self.chatSessionInputBarControl setInputBarType:RCChatSessionInputBarControlDefaultType style:RC_CHAT_INPUT_BAR_STYLE_SWITCH_CONTAINER_EXTENTION];
     // 注册 自定义 cell
     [self registerClass:[SIXTipMessageCell class] forMessageClass:[SIXTipMessageContent class]];
     [self registerClass:[SIXProductMessageCell class] forMessageClass:[SIXProductMessageContent class]];
@@ -73,7 +66,7 @@
         [self.chatSessionInputBarControl.pluginBoardView insertItemWithImage:[UIImage imageNamed:@"conversation_plugin_product"] title:@"商品" tag:102];
     }
     
-    // 监听键盘弹出事件
+    // 监听
     [self.conversationMessageCollectionView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
 }
 
@@ -83,13 +76,12 @@
     insets.bottom += 85;
     self.conversationMessageCollectionView.contentInset = insets;
     
-    UIButton *btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnRight.frame = CGRectMake(0, 0, 44, 44);
-    [btnRight setTitle:@"tipMsg" forState:UIControlStateNormal];
-    [btnRight setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btnRight addTarget:self action:@selector(headerRightButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnRight];
+//    UIButton *btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
+//    btnRight.frame = CGRectMake(0, 0, 44, 44);
+//    [btnRight setTitle:@"tipMsg" forState:UIControlStateNormal];
+//    [btnRight setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [btnRight addTarget:self action:@selector(headerRightButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnRight];
     
     // 添加 “奖单” 按钮
     if (ConversationType_PRIVATE == self.conversationType) {
@@ -115,7 +107,7 @@
 }
 
 - (void)btnMedalClicked:(UIButton *)sender {
-    NSLog(@"%s", __func__);
+//    NSLog(@"%s", __func__);
 }
 
 
