@@ -55,9 +55,14 @@ static CGFloat const kMsgContviewH = 80;
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    CGFloat portraitWidth = 46;
+//    CGFloat x = [RCIM sharedRCIM].globalConversationPortraitSize.width + 16 - 6;
+    CGFloat x = 10;
+    if (MessageDirection_SEND == self.model.messageDirection) {
+        x = portraitWidth * 2 + 10;
+    }
     
-    CGFloat x = [RCIM sharedRCIM].globalConversationPortraitSize.width + 16 - 6;
-    CGFloat msgContentViewMarginTotal = x * 2;
+    CGFloat msgContentViewMarginTotal = (portraitWidth + 10) * 2;
     CGFloat msgContentViewWidth = self.contentView.width - msgContentViewMarginTotal;
     CGRect frame = self.messageContentView.frame;
     frame.origin.x = x;

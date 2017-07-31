@@ -28,6 +28,8 @@
     //设置名片消息功能中联系人信息源和群组信息源
 //    [RCContactCardKit shareInstance].contactsDataSource = SHAREIMDataSource;
 //    [RCContactCardKit shareInstance].groupDataSource = SHAREIMDataSource;
+    // 设置头像大小、显示
+    [RCIM sharedRCIM].globalMessagePortraitSize = CGSizeMake(0, 46);
     
     // 自定义消息类型
     [[RCIM sharedRCIM] registerMessageType:[SIXTipMessageContent class]];
