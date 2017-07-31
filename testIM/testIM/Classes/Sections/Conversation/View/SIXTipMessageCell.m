@@ -36,7 +36,7 @@ static CGFloat const kTipHorizontalMargin = 15.f;
     
     CGFloat y = 10;
     CGFloat x = kTipHorizontalMargin;
-    CGFloat width = self.baseContentView.width;
+    CGFloat width = self.baseContentView.width - 2 * x;
     CGFloat textH = [self.lblTip.text textHeightWithFont:[UIFont systemFontOfSize:13] width:width];
     self.lblTip.frame = CGRectMake(x, y, width, textH);
 }
@@ -74,7 +74,7 @@ static CGFloat const kTipHorizontalMargin = 15.f;
 #pragma -mark 
 #pragma -mark event response
 - (void)tapGestureDidClicked:(UITapGestureRecognizer *)gesture {
-    CGPoint point = [gesture locationInView:self.contentView];
+    CGPoint point = [gesture locationInView:self.baseContentView];
     
     if (CGRectContainsPoint(self.lblTip.frame, point)) {
         if ([self.tipDelegate respondsToSelector:@selector(tipMessageCell:didTapTipText:)]) {
@@ -100,6 +100,7 @@ static CGFloat const kTipHorizontalMargin = 15.f;
         _lblTip.font = [UIFont systemFontOfSize:13];
         _lblTip.numberOfLines = 0;
         _lblTip.userInteractionEnabled = NO;
+        _lblTip.backgroundColor = [UIColor clearColor];
     }
     return _lblTip;
 }
