@@ -115,7 +115,6 @@ static CGFloat const kMsgContviewH = 80;
 #pragma -mark 
 #pragma -mark event response
 - (void)six_tapGestureDidClicked:(UITapGestureRecognizer *)gesture {
-//    NSLog(@"state: %ld", gesture.state);
     
     CGPoint point = [gesture locationInView:self.contentView];
 //    NSLog(@"%@", NSStringFromCGPoint(point));
@@ -128,10 +127,11 @@ static CGFloat const kMsgContviewH = 80;
 }
 
 - (void)six_longPressGestureDidPressed:(UILongPressGestureRecognizer *)gesture {
-//        NSLog(@"state: %ld", gesture.state);
-    if (UIGestureRecognizerStateEnded == gesture.state) {
+//    NSLog(@"state: %ld   firstResponder:%ld", gesture.state, self.isFirstResponder);
+    if (UIGestureRecognizerStateEnded == gesture.state || UIGestureRecognizerStateChanged == gesture.state) {
         return;
     }
+    
     UIMenuController *menuController = [UIMenuController sharedMenuController];
     // 明日任务， 自定义 复制、删除
     UIMenuItem *itemCopy = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(sixCopy:)];
