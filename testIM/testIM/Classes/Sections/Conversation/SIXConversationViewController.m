@@ -133,11 +133,11 @@
     if ([cell isKindOfClass:[SIXTipMessageCell class]]) {        
         SIXTipMessageCell *tipCell = (SIXTipMessageCell *)cell;
         tipCell.tipDelegate = self;
-        [cell setModel:cellModel];
+//        [cell setModel:cell9Model];
     } else if ([cell isKindOfClass:[SIXProductMessageCell class]]) {        
         SIXProductMessageCell *productCell = (SIXProductMessageCell *)cell;
         productCell.productDelegate = self;
-        [cell setModel:cellModel];
+//        [cell setModel:cellModel];
     }
 }
 
