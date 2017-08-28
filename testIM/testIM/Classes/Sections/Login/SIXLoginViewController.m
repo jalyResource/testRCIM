@@ -87,6 +87,11 @@
     }
     self.vcModel.phone = phone;
     self.vcModel.password = pwd;
+    /**
+     退出后 ConnectionStatus_SignUp = 12,已注销
+     未登录 ConnectionStatus_Unconnected  连接失败或未连接
+     */
+    NSLog(@"RC Statu: %ld", [RCIM sharedRCIM].getConnectionStatus);  //  
     
     [self showLoading];
     [AFHttpTool loginWithPhone:phone password:pwd region:@"86" success:^(id response) {

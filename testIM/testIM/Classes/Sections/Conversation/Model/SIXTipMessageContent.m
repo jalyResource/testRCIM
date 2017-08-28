@@ -12,7 +12,7 @@
 
 + (instancetype)tipMessageContentWithTipText:(NSString *)text {
     SIXTipMessageContent *model = [[self alloc] init];
-    model.tipText = text;
+    model.content = text;
     return model;
 }
 
@@ -29,7 +29,7 @@
  当App在后台收到消息时，需要通过此方法获取在本地通知中展现的内容摘要。
  */
 - (NSString *)conversationDigest {
-    return self.tipText;
+    return self.content;
 }
 
 #pragma -mark 
@@ -55,8 +55,8 @@
  */
 - (NSData *)encode {
     NSMutableDictionary *dicData = [[NSMutableDictionary alloc] init];
-    if (nil != self.tipText) {
-        [dicData setObject:self.tipText forKey:@"tipText"];
+    if (nil != self.content) {
+        [dicData setObject:self.content forKey:@"content"];
     }
     
     if (self.senderUserInfo) {
@@ -93,7 +93,7 @@
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         
         if (!error) {
-            self.tipText = dic[@"tipText"];
+            self.content = dic[@"content"];
             NSDictionary *dicUserInfo = dic[@"senderUserInfo"];
             [self decodeUserInfo:dicUserInfo];
         }
@@ -121,7 +121,7 @@
  @discussion 这里返回的关键内容列表将用于消息搜索，自定义消息必须要实现此接口才能进行搜索。
  */
 - (NSArray<NSString *> *)getSearchableWords{
-    return [self.tipText componentsSeparatedByString:@" "];
+    return [self.content componentsSeparatedByString:@" "];
 }
 @end
 

@@ -10,7 +10,7 @@
 
 @interface SIXTipMessageContent : RCMessageContent
 
-@property (copy, nonatomic) NSString *tipText;
+@property (copy, nonatomic) NSString *content;
 
 + (instancetype)tipMessageContentWithTipText:(NSString *)text ;
 

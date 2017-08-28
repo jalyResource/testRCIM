@@ -52,7 +52,7 @@ static CGFloat const kTipHorizontalMargin = 15.f;
     if ([messageContent isKindOfClass:[SIXTipMessageContent class]]) {
         SIXTipMessageContent *tipMessage = (SIXTipMessageContent *)messageContent;
         
-        self.lblTip.text = tipMessage.tipText;
+        self.lblTip.text = tipMessage.content;
         
         [self setNeedsLayout];
     }
@@ -67,7 +67,7 @@ static CGFloat const kTipHorizontalMargin = 15.f;
     SIXTipMessageContent *tipMessage = (SIXTipMessageContent *)model.content;
     
     CGFloat textW = collectionViewWidth - kTipHorizontalMargin * 2;
-    CGFloat textH = [tipMessage.tipText textHeightWithFont:[UIFont systemFontOfSize:13] width:textW];
+    CGFloat textH = [tipMessage.content textHeightWithFont:[UIFont systemFontOfSize:13] width:textW];
     
     return CGSizeMake(collectionViewWidth, extraHeight + textH);
 }

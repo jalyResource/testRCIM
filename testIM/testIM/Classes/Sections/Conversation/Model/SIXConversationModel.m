@@ -17,7 +17,7 @@
         case EnumSendMessageTypeTip: {
             SIXTipMessageContent *msgContent = [SIXTipMessageContent tipMessageContentWithTipText:@"this is test Text"];
             
-            [[RCIM sharedRCIM] sendMessage:self.conversationType targetId:self.targetId content:msgContent pushContent:msgContent.tipText pushData:msgContent.tipText success:^(long messageId) {
+            [[RCIM sharedRCIM] sendMessage:self.conversationType targetId:self.targetId content:msgContent pushContent:msgContent.content pushData:msgContent.content success:^(long messageId) {
                 DLog(@"\n\n\n   ---- send success");
             } error:^(RCErrorCode nErrorCode, long messageId) {
                 DLog(@"\n\n\n   ---- send faile");

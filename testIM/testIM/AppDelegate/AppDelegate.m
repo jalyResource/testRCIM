@@ -26,6 +26,8 @@
     
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
+    NSLog(@"didFinishLaunchingWithOptions RC Statu: %ld", [RCIM sharedRCIM].getConnectionStatus);
+    
     return YES;
 }
 
@@ -39,11 +41,22 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    NSLog(@"applicationDidEnterBackground RC Statu: %ld", [RCIM sharedRCIM].getConnectionStatus);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"applicationDidEnterBackground RC Statu: %ld", [RCIM sharedRCIM].getConnectionStatus);
+    });
+    
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    NSLog(@"applicationWillEnterForeground RC Statu: %ld", [RCIM sharedRCIM].getConnectionStatus);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"applicationWillEnterForeground RC Statu: %ld", [RCIM sharedRCIM].getConnectionStatus);
+    });
+    
 }
 
 
