@@ -123,8 +123,8 @@
 }
 
 - (void)btnUser1Clicked:(UIButton *)sender {
-    self.txtPhone.text = @"13651037787";
-    self.txtPwd.text = @"123456";
+    self.txtPhone.text = @"13612139663";
+    self.txtPwd.text = @"123321";
 }
 - (void)btnUser2Clicked:(UIButton *)sender {
     self.txtPhone.text = @"13651023662";
